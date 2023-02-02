@@ -6,7 +6,7 @@
 
 ## What is Hut?
 
-Hut stands for **H**TML (and CSS) **u**nder **T**ypeScript. It's is an **ultra-ergonomic HTML element construction library**. Call functions. Get HTMLElement objects with event bindings and CSS styling attached. That's it.
+Hut stands for **H**TML (and CSS) **U**nder **T**ypeScript. It's is an **ultra-ergonomic HTML element construction library**. Call functions. Get HTMLElement objects with event bindings and CSS styling attached. That's it.
 
 It turns out, this is all you need to create very complex UIs. **You don't need React, Vue, Angular**, or any of the others. These things are complicated UI sub-systems that run around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. You have to do things their way, otherwise, the magic won't work.
 

@@ -1,5 +1,5 @@
 {
-	"name": "hut-js",
+	"name": "hut-lib",
 	"author": "Paul Gordon",
 	"description": "Peacefully simple view layer. Because React is still too complicated.",
 	"version": "1.0.0",

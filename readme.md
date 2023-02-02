@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="docs/cover.png" alt="Hut Cover Image">
+	<img src="docs/cover.webp" alt="Hut Cover Image">
 </p>
 
 ## What is Hut?

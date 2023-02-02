@@ -2,12 +2,12 @@
 	"name": "hut-lib",
 	"author": "Paul Gordon",
 	"description": "Peacefully simple view layer. Because React is still too complicated.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"main": "hut.js",
 	"types": "hut.d.ts",
 	"scripts": {
-		"test" : "echo \"Error: no test specified\" && exit 0"
+		"test": "echo \"Error: no test specified\" && exit 0"
 	},
 	"files": [
 		"./+build/hut.js",

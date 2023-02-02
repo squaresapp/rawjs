@@ -2,7 +2,7 @@
 	"name": "hut-lib",
 	"author": "Paul Gordon",
 	"description": "Peacefully simple view layer. Because React is still too complicated.",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"license": "MIT",
 	"main": "hut.js",
 	"types": "hut.d.ts",

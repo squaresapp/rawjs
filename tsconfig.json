@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		"outFile": "+build/hut.debug.js",
+		"composite": true,
+		"module": "system",
+		"moduleResolution": "node",
+		"target": "esnext",
+		"inlineSourceMap": true,
+		"inlineSources": true,
+		"strict": true,
+		"baseUrl": "./",
+		"rootDir": ".",
+		"declaration": true,
+		"declarationMap": true,
+		"stripInternal": true,
+		"incremental": true,
+		"preserveConstEnums": true,
+		"lib": [
+			"dom",
+			"esnext",
+			"esnext.array",
+			"esnext.asynciterable"
+		]
+	},
+	"exclude": [
+		"**/+build/**/*.ts",
+	]
+}

@@ -1,0 +1,10 @@
+{
+	"name": "hut-js",
+	"author": "Paul Gordon",
+	"description": "Peacefully simple view layer. Because React is still too complicated.",
+	"version": "1.0.0",
+	"main": "hut.js",
+	"scripts": {
+	},
+	"license": "ISC"
+}

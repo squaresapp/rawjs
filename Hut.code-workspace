@@ -1,0 +1,108 @@
+ {
+	"folders": [
+		{
+			"path": ".",
+		},
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.DS_Store": true,
+			"**/node_modules": true,
+			"**/package-lock.json": true,
+			"*.tsbuildinfo": true,
+			"*.d.ts.map": true,
+		},
+		"search.exclude": {
+			"**/.git": true,
+			"**/.DS_Store": true,
+			"**/build": true,
+			"**/node_modules": true,
+			"**/package-lock.json": true,
+			"**/lib/*.js": true,
+			"index.*": true
+		},
+		"task.allowAutomaticTasks": "on",
+	},
+	"launch": {
+		"configurations": [
+			{
+				"name": "Debug Active Cover Function",
+				"type": "chrome",
+				"request": "launch",
+				"runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+				"cwd": "${workspaceRoot}",
+				"runtimeArgs": [
+					"${workspaceRoot}/node_modules/moduless/build/moduless.js",
+					"--remote-debugging-port=9222"
+				],
+				"sourceMaps": true,
+				"timeout": 2000
+			},
+			{
+				"name": "Debug All Cover Functions",
+				"type": "chrome",
+				"request": "launch",
+				"runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+				"cwd": "${workspaceRoot}",
+				"runtimeArgs": [
+					"${workspaceRoot}/node_modules/moduless/build/moduless.js",
+					"--remote-debugging-port=9222",
+					"expression=(cover)"
+				],
+				"sourceMaps": true,
+				"timeout": 2000
+			}
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Compile Library",
+				"type": "shell",
+				"command": "tsc",
+				"args": [
+					"--build",
+					"--watch"
+				],
+				"options": {
+					"cwd": "${workspaceRoot}"
+				},
+				"problemMatcher": [
+					"$tsc"
+				],
+				"runOptions": {
+					"runOn": "folderOpen"
+				},
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				},
+				"isBackground": true
+			},
+			{
+				"label": "Set Active Cover Function",
+				"type": "shell",
+				"command": "npx",
+				"args": [
+					"moduless",
+					"set",
+					"${file}:${lineNumber}"
+				],
+				"problemMatcher": []
+			},
+			{
+				"label": "Run All Cover Functions",
+				"type": "shell",
+				"command": "${workspaceRoot}/node_modules/.bin/electron",
+				"args": [
+					"${workspaceRoot}/node_modules/moduless/build/moduless.js",
+					"moduless",
+					"all"
+				],
+				"problemMatcher": []
+			}
+		]
+	}
+}

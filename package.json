@@ -10,6 +10,12 @@
 		"test": "echo \"Error: no test specified\" && exit 0",
 		"release": "ts-node ./Build.cover.ts && np"
 	},
+	"files": [
+		"./+build/hut.js",
+		"./+build/hut.min.js",
+		"./+build/hut.d.ts",
+		"./+build/hut.d.ts.map"
+	],
 	"np": {
 		"contents": "./+build"
 	}

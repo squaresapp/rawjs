@@ -9,6 +9,12 @@
 	"scripts": {
 		"test" : "echo \"Error: no test specified\" && exit 0"
 	},
+	"files": [
+		"./+build/hut.js",
+		"./+build/hut.min.js",
+		"./+build/hut.d.ts",
+		"./+build/hut.d.ts.map"
+	],
 	"np": {
 		"preview": true,
 		"contents": "./+build"

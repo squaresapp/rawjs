@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="docs/Cover.png" alt="Hut">
+	<img src="readme-poster.png" alt="Hut Poster Image">
 </p>
 
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Is%20React%20too%20complicated%3F%20Give%20Hut.js%20a%20go.&url=https://github.com/paul-go/Hut)
@@ -40,11 +40,11 @@ Also:
 ## Installation
 
 ```html
-<script src="https://cdnjs.org/hut-js.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hut-min@1.0.1/hut.min.js"></script>
 ```
 Or
 ```
-npm install hut-js --save
+npm install hut-min --save
 ```
 
 ## Getting Started

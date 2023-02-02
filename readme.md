@@ -2,30 +2,72 @@
 	<img src="docs/cover.webp" alt="Hut Cover Image">
 </p>
 
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Is%20React%20too%20complicated%3F%20Give%20Hut.js%20a%20go.&url=https://github.com/paul-go/Hut)
+
 ## What is Hut?
 
-Hut stands for **H**TML (and CSS) **u**nder **T**ypeScript. Hut is *vastly* simpler than essentially every other view layer in existence. React / Vue / Angular / etc are UI subsystems. They run around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. Because of this, they have to force you to structure your app in certain ways, otherwise the magic won't work.
+Hut stands for **H**TML (and CSS) **u**nder **T**ypeScript. It's is an **ultra-ergonomic HTML element construction library**. Call functions. Get elements with event bindings and CSS styling attached. That's it.
 
-By contrast, Hut is an ultra-ergonomic HTML element construction library. Call functions. Get elements. That's it. It's a way of creating complex HTML element structures very naturally, and connecting all sorts of bindings and stylings to them. 
+It turns out, this is all you need to create very complex UIs. **You don't need React, Vue, Angular**, or any of the others. These things are complicated UI sub-systems that around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. You have to learn to do things their way, otherwise, the magic won't work.
 
-The benefit of this approach is that your app's code becomes less complex, easier to debug, and exhibits less surprising behavior. It's very hard to illustrate this with silly 5-line [code-golf](https://en.wikipedia.org/wiki/Code_golf) style examples. The real test is how easy it is to iterate and debug a 50K LoC app with hundreds of components. As someone who has now built a few complex apps with Hut, there's now zero chance of me using React to build an app from scratch.
+By making controllers that are just plain TypeScript classes, storing view state and everything else directly in the DOM, you can **drop out the complexities associated with model/view synchronization**. Some devs will shudder at this. But by organizing your code like this, you can end up with a code base that is **vastly** less complex, easier to debug, and exhibits less surprising behavior.
 
-## Hut is just an HTML element construction library
+Unfortunately, it's very hard to illustrate these benefits with silly 5-line [code-golf](https://en.wikipedia.org/wiki/Code_golf) style examples. The real test is how easy it is to iterate and debug a 50K LoC app with hundreds of components. As someone who has now built a few complex apps with Hut, there's now zero chance of me using React to build an app from scratch.
 
-- All styling can be done in a right where you construct your elements, with full type-safety. **No need for separate CSS files**.
+## Why Use Hut?
+
 - No bloat. The whole library is only **2.3KB**.
 - No opinions about how you should structure you app.
+- No weird framework "magic".
+- No performance overhead.
 - No virtual DOM.
 - No JSX.
-- No performance overhead.
-- No weird framework "magic".
-- No web components or custom elements (but use them if you want).
-- Near-zero learning curve. If you know HTML, CSS, and JavaScript, you'll be able to get the hang of it within about 30 seconds.
+- No **SASS / LESS / PostCSS**. Write your CSS in TypeScript, and get all the benefits of styling becoming just another part of the code.
+- No framework learning curves. (There's a mindset shift. But if you know HTML, CSS, and JavaScript, you'll be able to get the hang of it within a few minutes.)
 
 Also: 
 
-- Being used in production (to build the Direct app)
+- Hut is being used in production (to build the Direct app).
+- Many years in the making. Has passed through many different design variations.
 - Works with ES modules, no modules (script include), or CommonJS
 - Works in Node.js / Deno for server-side HTML generation
 
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Is%20React%20too%20complicated%3F%20Give%20Hut.js%20a%20go.&url=https://github.com/paul-go/Hut)
+## Why Not Use Hut?
+
+- React / Vue obviously have a stronger ecosystem
+- No mobile-native UI (React Native) equivalent. If someone wants to make a Hut backend for NativeScript, send me a Tweet.
+
+## An Example Controller
+
+```typescript
+
+class MyController
+{
+	readonly head;
+	
+	constructor()
+	{
+		this.head = hot.div(
+			{
+				width: "100px",
+				height: "100px",
+				backgroundColor: "red",
+			},
+			hot.button(
+				hot.text("Click me"),
+				hot.on("click", () => this.handleClick())
+			)
+		);
+	}
+	
+	private handleClick()
+	{
+		console.log("Clicked!");
+	}
+}
+
+// Somewhere in your initialization code:
+document.body.append(new MyController().head);
+
+```
+

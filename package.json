@@ -6,6 +6,5 @@
 	"license": "MIT",
 	"main": "hut.js",
 	"types": "hut.d.ts",
-	"scripts": {
-	}
+	"test": ""
 }

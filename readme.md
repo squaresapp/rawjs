@@ -39,7 +39,7 @@ Also:
 
 ## Installation
 
-```
+```html
 <script src="https://cdnjs.org/hut-js.min.js"></script>
 ```
 Or

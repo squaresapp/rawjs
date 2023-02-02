@@ -4,13 +4,16 @@
 	"description": "Peacefully simple view layer. Because React is still too complicated.",
 	"version": "1.0.5",
 	"license": "MIT",
-	"main": "hut.js",
-	"types": "hut.d.ts",
+	"main": "./+build/hut.js",
+	"types": "./+build/hut.d.ts",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 0",
 		"release": "ts-node ./Build.cover.ts && np"
 	},
 	"files": [
+		"LICENSE",
+		"readme.md",
+		"readme-poster.png",
 		"./+build/hut.js",
 		"./+build/hut.min.js",
 		"./+build/hut.d.ts",

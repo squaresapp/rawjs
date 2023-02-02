@@ -10,9 +10,9 @@ Hut stands for **H**TML (and CSS) **U**nder **T**ypeScript. It's is an **ultra-e
 
 It turns out, this is all you need to create very complex UIs. **You don't need React, Vue, Angular**, or any of the others. These things are complicated UI sub-systems that run around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. You have to do things their way, otherwise, the magic won't work.
 
-But by making controllers that are just plain TypeScript classes, and storing view state and everything else directly in the DOM, you can **drop out the complexities associated with model/view synchronization**. Some devs will shudder at this. But by organizing your code like this, you can end up with a code base that is **vastly** less complex, easier to debug, and exhibits less surprising behavior.
+But by making controllers that are just plain TypeScript classes, and using the DOM itself as the backing store for view state, you can **drop out the complexities associated with model/view synchronization**. The view, the controller, and even (to some degree) the model become **one and the same**. Some devs will shudder at this. But by organizing your code like this, you can end up with a code base that is **vastly** less complex, easier to debug, and exhibits less surprising behavior.
 
-Unfortunately, it's very hard to illustrate these benefits with silly 5-line [code-golf](https://en.wikipedia.org/wiki/Code_golf) style examples. The real test is how easy it is to iterate and debug a 50K LoC app with hundreds of components. As someone who has now built a few complex apps with Hut, there's now zero chance of me using React to build an app from scratch.
+Unfortunately, it's very hard to illustrate the benefit with silly 5-line [code-golf](https://en.wikipedia.org/wiki/Code_golf) style examples. The real test is how easy it is to iterate and debug a 50K LoC app with hundreds of components. As someone who has now built a few complex apps with Hut, there's now zero chance of me using React to build an app from scratch.
 
 ## Why Use Hut?
 
@@ -34,7 +34,7 @@ Also:
 
 ## Why Not Use Hut?
 
-- **React / Vue have stronger ecosystems**. But for a 2.3KB library that does very little, does an "ecosystem" really matter that much?
+- **React / Vue have stronger ecosystems**. But for a battle-tested 2.3KB library that's not doing very much, how important really is an ecosystem?
 - No mobile-native UI (React Native) equivalent. If someone wants to make a Hut backend for NativeScript, send me a Tweet.
 
 ## Installation
@@ -46,6 +46,10 @@ Or
 ```
 npm install hut-js --save
 ```
+
+## Getting Started
+
+
 
 ## An Example Controller
 
@@ -71,7 +75,7 @@ class MyController
 	
 	private handleClick()
 	{
-		console.log("Clicked!");
+		alert("Clicked!");
 	}
 }
 

@@ -40,11 +40,11 @@ Also:
 ## Installation
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/hut-min@1.0.1/hut.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hut-lib@1.0.1/hut.min.js"></script>
 ```
 Or
 ```
-npm install hut-min --save
+npm install hut-lib --save
 ```
 
 ## Getting Started

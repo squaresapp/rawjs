@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="docs/cover.png" alt="Hut Cover Image">
+	<img src="docs/Cover.png" alt="Hut">
 </p>
 
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Is%20React%20too%20complicated%3F%20Give%20Hut.js%20a%20go.&url=https://github.com/paul-go/Hut)

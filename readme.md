@@ -40,7 +40,7 @@ Also:
 ## Installation
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/hut-lib@1.0.1/+build/hut.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hut-lib@1.0.6/+build/hut.min.js"></script>
 ```
 Or
 ```

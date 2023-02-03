@@ -47,10 +47,6 @@ Or
 npm install hut-lib --save
 ```
 
-## Getting Started
-
-
-
 ## An Example Controller
 
 ```typescript

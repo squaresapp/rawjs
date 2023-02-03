@@ -47,6 +47,10 @@ Or
 npm install hut-lib --save
 ```
 
+## Project Status
+
+The code is basically bomb proof. But the documentation is MIA. Still in the interest-gauging phase.
+
 ## An Example Controller
 
 ```typescript

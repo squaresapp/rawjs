@@ -14,8 +14,6 @@ The thesis of Hut is that **framework-supplied databinding is overrated**. By ma
 
 **In short**: Databinding is overrated for the majority of projects. Learn to live without it, and you probably won't look back.
 
-Unfortunately, it's very hard to illustrate this benefit with silly 5-line [code-golf](https://en.wikipedia.org/wiki/Code_golf) style examples. The real test is how easy it is to debug a 100K LoC app with hundreds of components. As someone who has now built a few complex apps with Hut, there's now zero chance of me using React to build an app from scratch.
-
 ## Why Use Hut?
 
 - Super **easy** to learn. Think jQuery levels of easy. But as **powerful** as React.

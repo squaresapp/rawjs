@@ -6,16 +6,19 @@
 
 ## What is Hut?
 
-Hut stands for **H**TML (and CSS) **U**nder **T**ypeScript. It's is an **ultra-ergonomic HTML element construction library**. Call functions. Get HTMLElement objects with event bindings and CSS styling attached. That's it.
+Hut is an **ultra-ergonomic HTML element construction library**. Call functions. Get HTMLElement objects with event bindings and CSS styling attached. That's it.
 
-It turns out, this is all you need to create very complex UIs. **You don't need React, Vue, Angular**, or any of the others. These things are complicated UI sub-systems that run around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. You have to do things their way, otherwise, the magic won't work.
+It turns out, this is all you need to create very complex UIs. **You don't need React, Vue, Angular, Svelte**, or any of the others. These things are complicated UI sub-systems that run around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. You have to do things their way, otherwise, the magic won't work.
 
-But by making controllers that are just plain TypeScript classes, and using the DOM itself as the backing store for view state, you can **drop out the complexities associated with model/view synchronization**. The view, the controller, and even (to some degree) the model become **one and the same**. Some devs will shudder at this. But by organizing your code like this, you can end up with a code base that is **vastly** less complex, easier to debug, and exhibits less surprising behavior.
+The thesis of Hut is that **framework-supplied databinding is overrated**. By making controllers that are just plain TypeScript classes, and using the DOM directly to store your view state, you can **drop out the complexities associated with model/view synchronization**. The view, the controller, and even (to some degree) the model become **one and the same**. Some devs will shudder at this. But by organizing your code like this, you'll have a project that is **vastly** less complex, easier to debug, and exhibits less surprising behavior.
 
-Unfortunately, it's very hard to illustrate the benefit with silly 5-line [code-golf](https://en.wikipedia.org/wiki/Code_golf) style examples. The real test is how easy it is to iterate and debug a 50K LoC app with hundreds of components. As someone who has now built a few complex apps with Hut, there's now zero chance of me using React to build an app from scratch.
+**In short**: Databinding is overrated for the majority of projects. Learn to live without it, and you probably won't look back.
+
+Unfortunately, it's very hard to illustrate this benefit with silly 5-line [code-golf](https://en.wikipedia.org/wiki/Code_golf) style examples. The real test is how easy it is to debug a 100K LoC app with hundreds of components. As someone who has now built a few complex apps with Hut, there's now zero chance of me using React to build an app from scratch.
 
 ## Why Use Hut?
 
+- Super **easy** to learn. Think jQuery levels of easy. But as **powerful** as React.
 - No bloat. The whole library is only **2.3KB**.
 - No props / state / special controllers that need to be inherited.
 - No weird or unpredictable framework "magic".
@@ -23,7 +26,6 @@ Unfortunately, it's very hard to illustrate the benefit with silly 5-line [code-
 - No virtual DOM.
 - No JSX.
 - No **SASS / LESS / PostCSS**. Write your CSS in TypeScript, and get all the benefits of styling becoming just another part of the code.
-- No **learning curve**. (There's a mindset shift. But if you know HTML, CSS, and JavaScript, you'll be able to get the hang of it within a few minutes.)
 
 Also: 
 

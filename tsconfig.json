@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"outFile": "+build/hut.debug.js",
+		"outFile": "+build/hot.debug.js",
 		"composite": true,
 		"module": "system",
 		"moduleResolution": "node",

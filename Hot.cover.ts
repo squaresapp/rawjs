@@ -2,9 +2,9 @@
 namespace Cover
 {
 	/** */
-	export function coverHut()
+	export function coverHot()
 	{
-		const hut = new Hut({
+		const hot = new Hot({
 			createElement(tagName)
 			{
 				return document.createElement(tagName);
@@ -17,13 +17,13 @@ namespace Cover
 	}
 	
 	/** */
-	export function coverHutConnectedEvent()
+	export function coverHotConnectedEvent()
 	{
-		const hut = new Hut();
+		const hot = new Hot();
 		
-		hut.get(document.body)(
-			hut.section(
-				hut.on("connected", () =>
+		hot.get(document.body)(
+			hot.section(
+				hot.on("connected", () =>
 				{
 					console.log("connected");
 				})
@@ -32,26 +32,26 @@ namespace Cover
 	}
 	
 	/** */
-	export function coverHutShadow()
+	export function coverHotShadow()
 	{
-		const hut = new Hut();
-		hut.css("DIV", { borderRadius: "20px" }).apply();
+		const hot = new Hot();
+		hot.css("DIV", { borderRadius: "20px" }).apply();
 		
-		hut.get(document.body)(
-			hut.div(
+		hot.get(document.body)(
+			hot.div(
 				"shadow-container",
 				{
 					border: "10px solid red",
 					padding: "10px",
 				},
-				hut.shadow(
-					hut.css(
+				hot.shadow(
+					hot.css(
 						"DIV",
 						{
 							backgroundColor: "yellow"
 						},
 					),
-					hut.div(
+					hot.div(
 						"shadow-element-1",
 						{
 							width: "100px",
@@ -60,8 +60,8 @@ namespace Cover
 						}
 					)
 				),
-				hut.shadow(
-					hut.div(
+				hot.shadow(
+					hot.div(
 						"shadow-element-2",
 						{
 							width: "100px",

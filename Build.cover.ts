@@ -8,5 +8,5 @@
 	
 	const run = (cmd: string) => new Promise<void>(r => cp.exec(cmd, () => r()));
 	await run(`tsc -p ./tsconfig.release.json`);
-	await run(`terser ${dir}hut.js > ${dir}hut.min.js`);
+	await run(`terser ${dir}hot.js > ${dir}hot.min.js`);
 })();

@@ -2,7 +2,7 @@
 	"name": "hotjs",
 	"author": "Paul Gordon",
 	"description": "Peacefully simple view layer. Because React is still too complicated.",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"license": "MIT",
 	"main": "./+build/hot.js",
 	"types": "./+build/hot.d.ts",

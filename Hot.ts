@@ -478,17 +478,27 @@ class Hot extends (() => Object as any as HotElements)()
 	private setProperty(
 		styleable: { style: CSSStyleDeclaration },
 		property: string,
-		value: string | number,
+		value: string | number | (string | number)[],
 		selectorOfContainingRule = "")
 	{
-		const [, selectorImportant] = this.trimImportant(selectorOfContainingRule);
-		const [v, valueImportant] = this.trimImportant(String(value));
-		let n = property.replace(/[A-Z]/g, char => "-" + char.toLowerCase());
+		if (typeof value === "number")
+			value ||= 0;
 		
+		const [, selectorImportant] = this.trimImportant(selectorOfContainingRule);
+		let n = property.replace(/[A-Z]/g, char => "-" + char.toLowerCase());
 		if (n.slice(0, 6) === "webkit" || n.slice(0, 3) === "moz" || n.slice(0, 2) === "ms")
 			n = "-" + n;
 		
-		styleable.style.setProperty(n, v, selectorImportant || valueImportant);
+		if (!Array.isArray(value))
+		{
+			const [v, valueImportant] = this.trimImportant(String(value));
+			styleable.style.setProperty(n, v, selectorImportant || valueImportant);
+		}
+		else for (const item of value)
+		{
+			const [v, valueImportant] = this.trimImportant(String(item));
+			styleable.style.setProperty(n, v, selectorImportant || valueImportant);
+		}
 	}
 	
 	/** */
@@ -651,16 +661,9 @@ class Hot extends (() => Object as any as HotElements)()
 				cssRules.push(cssRule);
 				
 				for (const stylesObject of group.styles)
-				{
 					for (let [n, v] of Object.entries(stylesObject))
-					{
-						if (typeof v === "number")
-							v = String(v || 0);
-						
 						if (typeof v === "string")
 							this._.hot.setProperty(cssRule, n, v, group.selector);
-					}
-				}
 			}
 			
 			if (e instanceof HTMLElement)
@@ -917,8 +920,8 @@ declare namespace Hot
 	/** */
 	export type Style = {
 		[P in keyof CSSStyleDeclaration]?: P extends keyof NumericStyleDeclaration ? 
-			NumericStyleDeclaration[P] : 
-			CSSStyleDeclaration[P]
+			NumericStyleDeclaration[P] | NumericStyleDeclaration[P][] : 
+			CSSStyleDeclaration[P] | CSSStyleDeclaration[P][];
 	};
 	
 	/**

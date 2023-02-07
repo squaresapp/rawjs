@@ -74,6 +74,20 @@ namespace Cover
 		);
 	}
 	
+	/** */
+	export function coverHotArrayValues()
+	{
+		const hot = new Hot();
+		const div = hot.div(
+			{
+				width: ["error", "100%"]
+			}
+		);
+		
+		document.body.append(div);
+		return () => div.style.width === "100%";
+	}
+	
 	//@ts-ignore
 	if (typeof module === "object") Object.assign(module.exports, { Cover });
 }

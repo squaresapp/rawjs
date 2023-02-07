@@ -10,7 +10,7 @@ Hot stands for **H**TML **O**utputs from **T**ypeScript. It's an **ultra-ergonom
 
 It turns out, this is all you need to create very complex UIs. **You don't need React, Vue, Angular, Svelte**, or any of the others. These things are complicated UI sub-systems that run around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. You have to do things their way, otherwise, the magic won't work.
 
-The thesis of HotJS is that **framework-supplied databinding is overrated**. By making controllers that are just plain TypeScript classes, and using the DOM directly to store your view state, you can **drop out the complexities associated with model/view synchronization**. The view, the controller, and even (to some degree) the model become **one and the same**. Some devs will shudder at this. But by organizing your code like this, you'll have a project that is **vastly** less complex, easier to debug, and exhibits less surprising behavior.
+The thesis of HotJS is that **framework-supplied databinding is overrated**. By making controllers that are just plain TypeScript classes, and using the DOM directly to store your view state, you can **drop out the complexities associated with model/view synchronization**. The view, the controller, and even (to some degree) the model become **one and the same**. Some devs will shudder at this. But this technique can **vastly** reduce complexity, debugging difficulty, and surprising behavior.
 
 **In short**: Databinding is overrated for the majority of projects. Learn to live without it, and you probably won't look back.
 

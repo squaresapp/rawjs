@@ -6,6 +6,13 @@
 	"license": "MIT",
 	"main": "./+build/hot.js",
 	"types": "./+build/hot.d.ts",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/paul-go/hotjs"
+	},
+	"bugs": {
+		"url": "https://github.com/paul-go/hotjs/issues"
+	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 0",
 		"release": "ts-node ./Build.cover.ts && np"

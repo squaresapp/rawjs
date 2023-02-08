@@ -1,4 +1,5 @@
 
+# HotJS Quickstart
 
 ## Class Names
 
@@ -221,7 +222,7 @@ hot.input(
 );
 ```
 
-# Remote Event Targets
+## Remote Event Targets
 
 When you attach an event handler to an element, and the element dies, so does the event handler. But sometimes you want the life of the handler to be connected to a *different* element. You can do this by passing a different target as the first argument to `hot.on()`. For example:
 
@@ -234,27 +235,78 @@ hot.div(
 	{
 		if (ev.key === "Escape")
 			e.remove();
-	),
+	}),
 );
 
 ```
 
-# CSS
+## Acquiring Existing Elements
 
-You can and should do most of your styling with inline styles. **Don't be afraid of this**. You can encapsulate all your styling in callable functions, so inline styling doesn't suck in HotJS like it does with standard HTML. This also gives good performance because the browser doesn't need to match styles up with CSS rules. But there still times when it's better to use real CSS rules. Fortunately, HotJS makes this easy with the `hot.css()` method.
+You can capture existing elements with the `hot.get(...)` function. You can think of this as similar to the `$(...)` call in jQuery. But instead, this function returns *another* function that accepts arguments which are then assigned back to the element.
+
+Here is an example of capturing an existing element, and attaching a class name and an event listener.
 
 ```typescript
+hot.get(someExistingElement)(
+	"add-this-class",
+	hot.on("click", () =>
+	{
+		// ...
+	})
+);
+```
+
+You can also pass more than one element, and in which case, the arguments will be applied to each element:
+
+```typescript
+// Add each of the 2 classes to each of the 3 elements
+hot.get(element1, element2, element3)(
+	"class1", "class2"
+);
+```
+
+The return value of the `hot.get()` function is the element or elements that were passed in. This is especially handy when using functions that return components, and you would like to augment the return component within the context of some other hierarchy being created:
+
+```typescript
+function makeButton(text: string, href: string)
+{
+	return hot.a(
+		"button",
+		hot.text(text)
+	);
+}
+
 hot.div(
-	hot.css(":hover", {
-		outline: "1px solid red"
-	}),
-	// Creates a rule that applies to
-	// only to the containing <div>
-	" DIV", {
-		width: "100px",
-		height: "100px",
-		border: "1px solid blue",
-	},
+	hot.get(makeButton("Click me")(
+		hot.on("click", () =>
+		{
+			// Click event handler is
+			// added to the button!
+		})
+	)
+);
+```
+
+# CSS
+
+You can do most of your styling with inline styles. **Don't be afraid of this**. You can encapsulate all your styling in callable functions, so inline styling doesn't suck in HotJS like it does with standard HTML. This also gives good performance because the browser doesn't need to match styles up with CSS rules. But there still times when it's better to use real CSS rules. Fortunately, HotJS makes this easy with the `hot.css()` method.
+
+```typescript
+hot.section(
+	hot.css(
+		// Creates a rule that selects the hover state
+		// of the containing <section>
+		":hover", {
+			outline: "1px solid red"
+		},
+		// Creates a rule that matches the child <div>
+		// elements, only within the containing <section>
+		" DIV", {
+			width: "100px",
+			height: "100px",
+			border: "1px solid blue",
+		}
+	),
 	hot.div(),
 	hot.div(),
 	hot.div(),
@@ -281,4 +333,26 @@ hot.div(
 	height: 100px;
 	border: 1px solid blue;
 }
+```
+
+## Use Arrays For Fallback Values
+
+In CSS, sometimes you'll see the same property defined multiple times with different values, to account for the fact that different browsers recognize different properties:
+
+```css
+DIV
+{
+	width: -moz-available;
+	width: -webkit-fill-available;
+	width: fill-available;
+	width: stretch";
+}
+```
+
+However, the same property key cannot be used multiple times in a JSON object literal. The HotJS equivalent of this pattern is to use an array of values:
+
+```typescript
+hot.div(
+	{ "width": ["-moz-available", "-webkit-fill-available", "fill-available" "stretch"]}
+);
 ```

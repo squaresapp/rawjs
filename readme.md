@@ -41,7 +41,7 @@ Also:
 ## Installation
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/hotjs@1.0.6/+build/hot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hotjs@1.0.7/+build/hot.min.js"></script>
 ```
 Or
 ```

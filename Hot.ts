@@ -558,7 +558,7 @@ class Hot extends (() => Object as any as HotElements)()
 			hot: Hot,
 			components: (string | Hot.Style)[])
 		{
-			this._ = { hot, components, sheet: null };
+			this._ = { hot, components, sheet: null, hasApplied: false };
 			this.class = "c" + (this._.hot.index++);
 		}
 		
@@ -567,6 +567,7 @@ class Hot extends (() => Object as any as HotElements)()
 			readonly hot: Hot;
 			readonly components: readonly (string | Hot.Style)[];
 			sheet: CSSStyleSheet | null;
+			hasApplied: boolean;
 		};
 		
 		/** */
@@ -584,28 +585,10 @@ class Hot extends (() => Object as any as HotElements)()
 		 * Installs the CSS rules defined within this Sheet instance on
 		 * the element provided.
 		 */
-		async apply(e: Element | ShadowRoot): Promise<void>;
-		async apply(e?: Element | ShadowRoot)
+		async apply(e: HTMLElement | ShadowRoot): Promise<void>;
+		async apply(e?: HTMLElement | ShadowRoot)
 		{
-			const groups: { selector: string, styles: Hot.Style[] }[] = [{ selector: "", styles: [] }];
-			
-			for (let i = -1; ++i < this._.components.length;)
-			{
-				const cur = this._.components[i];
-				const last = i > 0 && this._.components[i - 1];
-				
-				if (typeof cur === "string" && typeof last === "object")
-					groups.push({ selector: "", styles: [] });
-				
-				const group = groups[groups.length - 1];
-				
-				if (typeof cur === "string")
-					group.selector += cur;
-				else
-					group.styles.push(cur);
-			}
-			
-			let sheet: CSSStyleSheet;
+			this._.sheet ||= await (async () =>
 			{
 				const cls = "hot-style-sheet";
 				const target = Hot.is.shadow(e) ? e : document.head;
@@ -613,60 +596,75 @@ class Hot extends (() => Object as any as HotElements)()
 				const existing = children.find((e) => (e as HTMLElement).classList.contains(cls));
 				
 				if (existing instanceof HTMLStyleElement)
-				{
-					sheet = existing.sheet!;
-				}
-				else
-				{
-					const styleTag = document.createElement("style");
-					styleTag.className = cls;
-					target.append(styleTag);
-					
-					// At least in Chrome, the .sheet property of a <style> element
-					// is null immediately after the element is attached to the shadow
-					// root element, and so in this case we need to wait for the next
-					// turn of the event loop before accessing the .sheet property.
-					if (e instanceof ShadowRoot)
-						await new Promise(r => setTimeout(r));
-					
-					sheet = styleTag.sheet!;
-				}
-			}
+					return existing.sheet!;
+				
+				const styleTag = document.createElement("style");
+				styleTag.className = cls;
+				target.append(styleTag);
+				
+				// At least in Chrome, the .sheet property of a <style> element
+				// is null immediately after the element is attached to the shadow
+				// root element, and so in this case we need to wait for the next
+				// turn of the event loop before accessing the .sheet property.
+				if (e instanceof ShadowRoot)
+					await new Promise(r => setTimeout(r));
+				
+				return styleTag.sheet!;
+			})();
 			
-			this._.sheet = sheet;
-			const cssRules: CSSStyleRule[] = [];
-			
-			for (const group of groups)
+			if (!this._.hasApplied)
 			{
-				const selectorParts = group.selector.split("&");
-				let selector = group.selector;
+				this._.hasApplied = true;
 				
-				if (e instanceof HTMLElement)
+				const groups: { selector: string, styles: Hot.Style[] }[] = [{ selector: "", styles: [] }];
+				for (let i = -1; ++i < this._.components.length;)
 				{
-					if (selector.startsWith("*"))
-					{
-						selector = "." + this.class + " " + selector;
-					}
-					else if (selector !== ":root")
-					{
-						[selector] = this._.hot.trimImportant(
-							selectorParts.length === 1 ?
-								"." + this.class + group.selector :
-								selectorParts.join("." + this.class));
-					}
+					const cur = this._.components[i];
+					const last = i > 0 && this._.components[i - 1];
+					
+					if (typeof cur === "string" && typeof last === "object")
+						groups.push({ selector: "", styles: [] });
+					
+					const group = groups[groups.length - 1];
+					
+					if (typeof cur === "string")
+						group.selector += cur;
+					else
+						group.styles.push(cur);
 				}
 				
-				const idx = sheet.insertRule(selector + "{}");
-				const cssRule = sheet.cssRules.item(idx) as CSSStyleRule;
-				cssRules.push(cssRule);
-				
-				for (const stylesObject of group.styles)
-					for (let [n, v] of Object.entries(stylesObject))
-						if (typeof v === "string")
-							this._.hot.setProperty(cssRule, n, v, group.selector);
+				for (const group of groups)
+				{
+					const selectorParts = group.selector.split("&");
+					let selector = group.selector;
+					
+					if (Hot.is.element(e))
+					{
+						if (selector.startsWith("*"))
+						{
+							selector = "." + this.class + " " + selector;
+						}
+						else if (selector !== ":root")
+						{
+							[selector] = this._.hot.trimImportant(
+								selectorParts.length === 1 ?
+									"." + this.class + group.selector :
+									selectorParts.join("." + this.class));
+						}
+					}
+					
+					const idx = this._.sheet.insertRule(selector + "{}");
+					const cssRule = this._.sheet.cssRules.item(idx) as CSSStyleRule;
+					this.cssRules.push(cssRule);
+					
+					for (const stylesObject of group.styles)
+						for (let [n, v] of Object.entries(stylesObject))
+							if (typeof v === "string")
+								this._.hot.setProperty(cssRule, n, v, group.selector);
+				}
 			}
 			
-			if (e instanceof HTMLElement)
+			if (Hot.is.element(e))
 				e.classList.add(this.class);
 		}
 		
@@ -806,8 +804,11 @@ declare namespace Hot
 		Hot.Event |
 		Hot.Sheet |
 		Hot.ShadowClosure |
-		false | void |
-		Promise<any> |
+		// Conditionals
+		false | void | null | undefined |
+		// Arrays of Params
+		ShadowParam[] |
+		Promise<void> |
 		INodeLike;
 	
 	/** */

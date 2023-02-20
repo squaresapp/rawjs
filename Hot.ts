@@ -99,7 +99,6 @@ interface HotElements
 	source(...params: Hot.Param[]): HTMLSourceElement;
 	span(...params: Hot.Param[]): HTMLSpanElement;
 	strong(...params: Hot.Param[]): HTMLElement;
-	style(...params: Hot.Param[]): HTMLStyleElement;
 	sub(...params: Hot.Param[]): HTMLElement;
 	summary(...params: Hot.Param[]): HTMLElement;
 	sup(...params: Hot.Param[]): HTMLElement;
@@ -126,7 +125,7 @@ interface HotElements
 class Hot extends (() => Object as any as HotElements)()
 {
 	/** */
-	static readonly elements = ["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "slot", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "video", "wbr",
+	static readonly elements = ["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "slot", "small", "source", "span", "strong", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "video", "wbr",
 	];
 	
 	/**
@@ -276,14 +275,18 @@ class Hot extends (() => Object as any as HotElements)()
 						}
 					}
 				}
-				break; case Hot.Sheet:
-				{
-					(param as Hot.Sheet).apply(e as HTMLElement);
-				}
 				break; case String:
 				{
 					// Note that ShadowRoots cannot accept string parameters.
-					(e as Element).classList.add(param as string);
+					const cssClass = param as string;
+					(e as Element).classList.add(cssClass);
+					
+					if (cssClass.indexOf(Hot.GeneratedClassPrefix.value) === 0)
+					{
+						const maybeShadow = e.getRootNode();
+						if (Hot.is.shadow(maybeShadow))
+							this.toShadow(maybeShadow, cssClass);
+					}
 				}
 				break; case Object:
 				{
@@ -355,6 +358,8 @@ class Hot extends (() => Object as any as HotElements)()
 		
 		return e;
 	}
+	
+	private cssPropertySet: Set<string> | null = null;
 	
 	//# Event Related
 	
@@ -468,10 +473,169 @@ class Hot extends (() => Object as any as HotElements)()
 	
 	//# Style Related
 	
-	/** */
-	css(...components: (string | Hot.Style)[])
+	/**
+	 * Creates an HTML <style> element with the specified attributes,
+	 * and with the specified CSS rules embedded.
+	 */
+	style(attributes: Hot.ElementAttribute, ...components: (string | Hot.Style)[]): Hot.HTMLHotStyleElement;
+	/**
+	 * Creates an HTML <style> element with the specified CSS rules embedded.
+	 */
+	style(firstSelectorComponent: string, ...components: (string | Hot.Style)[]): Hot.HTMLHotStyleElement;
+	/**
+	 * Creates an HTML <style> element with the specified attributes,
+	 * and with the specified raw CSS text embedded.
+	 */
+	style(attributes: Hot.ElementAttribute, ...rawCss: Text[]): Hot.HTMLHotStyleElement;
+	/**
+	 * Creates an HTML <style> element that contains the specified raw CSS text embedded.
+	 */
+	style(...rawCss: Text[]): Hot.HTMLHotStyleElement;
+	style(...args: any[])
 	{
-		return new Hot.Sheet(this, components);
+		const element = 
+			(this.provider.createElement?.("style") as Hot.HTMLHotStyleElement) ||
+			document.createElement("style");
+		
+		element.attach = function(n?: Node)
+		{
+			const root = n ? n.getRootNode() : document;
+			const container = root instanceof Document ? root.head : root;
+			container.appendChild(element);
+			return element;
+		};
+		
+		if (args.length === 0)
+			return element;
+		
+		if (typeof args[0] !== "string")
+			this.get(element)(args.shift());
+		
+		if (args.every(a => Hot.is.text(a)))
+		{
+			element.append(...args);
+			return element;
+		}
+		
+		const cssText: string[] = [];
+		
+		for (const group of this.createCssRuleGroups(args))
+		{
+			const style: Hot.Style = Object.assign({}, ...group.styles);
+			const properties = Object.entries(style)
+				.map(([p, v]) => this.toCssDashCase(p) + ": " + v)
+				.join(";");
+			
+			cssText.push(group.selector, "{", properties, "}");
+		}
+		
+		element.append(new Text(cssText.join("")))
+		return element;
+	}
+	
+	/**
+	 * Creates a series of CSS rules internally, and returns a class that
+	 * can be applied to HTML elements in order to apply the rules to
+	 * them.
+	 */
+	css(...components: Hot.CssParam[])
+	{
+		const styleElement = this.getScopedStyleElement(document);
+		const cssJsonText = JSON.stringify(components);
+		components = JSON.parse(cssJsonText);
+		const cssHashClass = Hot.GeneratedClassPrefix.value + this.hash(cssJsonText);
+		this.applyCssToScope(styleElement, cssHashClass, components);
+		return cssHashClass;
+	}
+	
+	/**
+	 * Copies the rules that are connected to the specified CSS class
+	 * (which is expected to be a hash of CSS rules) so that they are
+	 * visible within the specified ShadowRoot.
+	 */
+	private toShadow(shadow: ShadowRoot, cssHashClass: string)
+	{
+		const styleElement = this.getScopedStyleElement(shadow);
+		const cssParams = Hot.ruleData.get(styleElement)?.get(cssHashClass);
+		if (cssParams)
+			this.applyCssToScope(styleElement, cssHashClass, cssParams);
+	}
+	
+	/** */
+	private applyCssToScope(
+		styleElement: HTMLStyleElement,
+		cssHashClass: string,
+		components: Hot.CssParam[])
+	{
+		// Don't create another CSS rule if there is already one
+		// that exists within the provided <style> element with
+		// the provided rule hash.
+		if (Hot.ruleData.get(styleElement)?.get(cssHashClass))
+			return;
+		
+		const sheet = styleElement.sheet!;
+		const groups = this.createCssRuleGroups(components);
+		
+		for (const group of groups)
+		{
+			const selectorParts = group.selector.split("&");
+			let selector = group.selector;
+			
+			if (selector.startsWith("*"))
+			{
+				selector = "." + cssHashClass + " " + selector;
+			}
+			else if (selector !== ":root")
+			{
+				[selector] = this.trimImportant(
+					selectorParts.length === 1 ?
+						"." + cssHashClass + group.selector :
+						selectorParts.join("." + cssHashClass));
+			}
+			
+			const idx = sheet.insertRule(selector + "{}");
+			const cssRule = sheet.cssRules.item(idx) as CSSStyleRule;
+			
+			for (const stylesObject of group.styles)
+				for (let [n, v] of Object.entries(stylesObject))
+					if (typeof v === "string" || (typeof v === "number" && v === v))
+						this.setProperty(cssRule, n, v, group.selector);
+		}
+		
+		let hashSet = Hot.ruleData.get(styleElement);
+		if (hashSet)
+			hashSet.set(cssHashClass, components);
+		else
+			Hot.ruleData.set(styleElement, hashSet = new Map([[cssHashClass, components]]));
+	}
+	
+	/**
+	 * Stores a WeakMap of Sets of the hashes of the contents of each CSS rule
+	 * that has been applied to a given generated <style> element.
+	 */
+	private static readonly ruleData = new WeakMap<HTMLStyleElement, Map<string, Hot.CssParam[]>>();
+	
+	/** */
+	private createCssRuleGroups(components: readonly (string | Hot.Style)[])
+	{
+		const groups: { selector: string, styles: Hot.Style[] }[] = [{ selector: "", styles: [] }];
+		for (let i = -1; ++i < components.length;)
+		{
+			const cur = components[i];
+			const last = i > 0 && components[i - 1];
+			
+			if (typeof cur === "string" && typeof last === "object")
+				groups.push({ selector: "", styles: [] });
+			
+			const group = groups[groups.length - 1];
+			
+			if (typeof cur === "string")
+				group.selector += cur;
+			else
+				group.styles.push(cur);
+		}
+		
+		return groups;
 	}
 	
 	/** */
@@ -485,20 +649,28 @@ class Hot extends (() => Object as any as HotElements)()
 			value ||= 0;
 		
 		const [, selectorImportant] = this.trimImportant(selectorOfContainingRule);
-		let n = property.replace(/[A-Z]/g, char => "-" + char.toLowerCase());
-		if (n.slice(0, 6) === "webkit" || n.slice(0, 3) === "moz" || n.slice(0, 2) === "ms")
-			n = "-" + n;
+		const p = this.toCssDashCase(property);
 		
 		if (!Array.isArray(value))
 		{
 			const [v, valueImportant] = this.trimImportant(String(value));
-			styleable.style.setProperty(n, v, selectorImportant || valueImportant);
+			styleable.style.setProperty(p, v, selectorImportant || valueImportant);
 		}
 		else for (const item of value)
 		{
 			const [v, valueImportant] = this.trimImportant(String(item));
-			styleable.style.setProperty(n, v, selectorImportant || valueImportant);
+			styleable.style.setProperty(p, v, selectorImportant || valueImportant);
 		}
+	}
+	
+	/** */
+	private toCssDashCase(p: string)
+	{
+		p = p.replace(/[A-Z]/g, char => "-" + char.toLowerCase());
+		if (p.slice(0, 6) === "webkit" || p.slice(0, 3) === "moz" || p.slice(0, 2) === "ms")
+			p = "-" + p;
+		
+		return p;
 	}
 	
 	/** */
@@ -515,178 +687,58 @@ class Hot extends (() => Object as any as HotElements)()
 		return [str, "important"];
 	}
 	
-	private index = 0;
-	
-	/** */
-	animation(animationName: string, style: Record<number, Hot.Style>): Hot.Style
+	/**
+	 * Returns the CSSStyleSheet that stores the CSS rules that should
+	 * target the specified element. If the element is within a shadow root,
+	 * the sheet that is returned is the one that is contained within this
+	 * shadow root.
+	 */
+	private getScopedStyleElement(applyTarget: ParentNode)
 	{
-		if (this.animationsWritten.includes(animationName))
-			return { animationName };
-		
-		this.animationsWritten.push(animationName);
-		const css: string[] = [];
-		
-		for (const [keyframe, styles] of Object.entries(style))
+		let container: ParentNode = (() =>
 		{
-			css.push(keyframe + "% { ");
+			if (Hot.is.shadow(applyTarget))
+				return applyTarget;
 			
-			for (const [propertyName, propertyValue] of Object.entries(styles))
-				css.push(propertyName + ": " + propertyValue + ";");
-			
-			css.push(" } ");
-		}
+			const root = applyTarget.getRootNode();
+			return root instanceof Document ?
+				root.head :
+				root as ShadowRoot;
+		})();
 		
-		const animationBody = css.join("");
-		const fullCss  = ["@", "@-webkit-", "@-moz-"].map(s =>
-			s + `keyframes ${animationName} { ${animationBody} }`).join("");
+		const cls = "hot-style-sheet";
+		const children = Array.from(container.childNodes);
+		const existing = children.find((e) => (e as HTMLElement).classList.contains(cls));
 		
-		const styleTag = this.style("animation-sheet", new Text(fullCss));
-		styleTag.classList.add(animationName);
-		document.head.append(styleTag);
+		if (existing instanceof HTMLStyleElement)
+			return existing;
 		
-		return { animationName };
+		const styleElement = document.createElement("style");
+		styleElement.className = cls;
+		container.append(styleElement);
+		return styleElement;
 	}
 	
-	private readonly animationsWritten: string[] = [];
-	private cssPropertySet: Set<string> | null = null;
-	
-	/** */
-	static readonly Sheet = class Sheet
+	/**
+	 * Hash calculation function adapted from:
+	 * https://stackoverflow.com/a/52171480/133737
+	 */
+	private hash(value: { toString(): string; }, seed = 0)
 	{
-		/** */
-		constructor(
-			hot: Hot,
-			components: (string | Hot.Style)[])
+		const val = value.toString();
+		let h1 = 0xDEADBEEF ^ seed;
+		let h2 = 0X41C6CE57 ^ seed;
+		
+		for (let i = 0; i < val.length; i++)
 		{
-			this._ = { hot, components, sheet: null, hasApplied: false };
-			this.class = "c" + (this._.hot.index++);
+			let ch = val.charCodeAt(i);
+			h1 = Math.imul(h1 ^ ch, 2654435761);
+			h2 = Math.imul(h2 ^ ch, 1597334677);
 		}
 		
-		/** @internal */
-		readonly _: {
-			readonly hot: Hot;
-			readonly components: readonly (string | Hot.Style)[];
-			sheet: CSSStyleSheet | null;
-			hasApplied: boolean;
-		};
-		
-		/** */
-		readonly class: string;
-		
-		/** */
-		readonly cssRules: CSSStyleRule[] = [];
-		
-		/**
-		 * Installs the CSS rules defined within this Sheet instance globally,
-		 * instead of being scoped to a particular HTML element.
-		 */
-		async apply(): Promise<void>;
-		/**
-		 * Installs the CSS rules defined within this Sheet instance on
-		 * the element provided.
-		 */
-		async apply(e: HTMLElement | ShadowRoot): Promise<void>;
-		async apply(e?: HTMLElement | ShadowRoot)
-		{
-			this._.sheet ||= await (async () =>
-			{
-				const cls = "hot-style-sheet";
-				const target = Hot.is.shadow(e) ? e : document.head;
-				const children = Array.from(target.childNodes);
-				const existing = children.find((e) => (e as HTMLElement).classList.contains(cls));
-				
-				if (existing instanceof HTMLStyleElement)
-					return existing.sheet!;
-				
-				const styleTag = document.createElement("style");
-				styleTag.className = cls;
-				target.append(styleTag);
-				
-				// At least in Chrome, the .sheet property of a <style> element
-				// is null immediately after the element is attached to the shadow
-				// root element, and so in this case we need to wait for the next
-				// turn of the event loop before accessing the .sheet property.
-				if (e instanceof ShadowRoot)
-					await new Promise(r => setTimeout(r));
-				
-				return styleTag.sheet!;
-			})();
-			
-			if (!this._.hasApplied)
-			{
-				this._.hasApplied = true;
-				
-				const groups: { selector: string, styles: Hot.Style[] }[] = [{ selector: "", styles: [] }];
-				for (let i = -1; ++i < this._.components.length;)
-				{
-					const cur = this._.components[i];
-					const last = i > 0 && this._.components[i - 1];
-					
-					if (typeof cur === "string" && typeof last === "object")
-						groups.push({ selector: "", styles: [] });
-					
-					const group = groups[groups.length - 1];
-					
-					if (typeof cur === "string")
-						group.selector += cur;
-					else
-						group.styles.push(cur);
-				}
-				
-				for (const group of groups)
-				{
-					const selectorParts = group.selector.split("&");
-					let selector = group.selector;
-					
-					if (Hot.is.element(e))
-					{
-						if (selector.startsWith("*"))
-						{
-							selector = "." + this.class + " " + selector;
-						}
-						else if (selector !== ":root")
-						{
-							[selector] = this._.hot.trimImportant(
-								selectorParts.length === 1 ?
-									"." + this.class + group.selector :
-									selectorParts.join("." + this.class));
-						}
-					}
-					
-					const idx = this._.sheet.insertRule(selector + "{}");
-					const cssRule = this._.sheet.cssRules.item(idx) as CSSStyleRule;
-					this.cssRules.push(cssRule);
-					
-					for (const stylesObject of group.styles)
-						for (let [n, v] of Object.entries(stylesObject))
-							if (typeof v === "string")
-								this._.hot.setProperty(cssRule, n, v, group.selector);
-				}
-			}
-			
-			if (Hot.is.element(e))
-				e.classList.add(this.class);
-		}
-		
-		/**
-		 * Removes the CSS rules contained within this Sheet instance
-		 * from the CSS DOM.
-		 */
-		remove()
-		{
-			const sheet = this._.sheet;
-			if (!sheet)
-				return;
-			
-			for (let i = sheet.cssRules.length; i-- > 0;)
-			{
-				const rule = sheet.cssRules.item(i);
-				if (rule && this.cssRules.includes(rule as CSSStyleRule))
-					sheet.deleteRule(i);
-			}
-			
-			this.cssRules.length = 0;
-		}
+		h1 = Math.imul(h1 ^ h1 >>> 16, 2246822507) ^ Math.imul(h2 ^ h2 >>> 13, 3266489909);
+		h2 = Math.imul(h2 ^ h2 >>> 16, 2246822507) ^ Math.imul(h1 ^ h1 >>> 13, 3266489909);
+		return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 	}
 }
 
@@ -753,6 +805,24 @@ declare namespace Hot
 	}
 	
 	/**
+	 * A type that describes the special HTMLStyleElement that is
+	 * returned from the hot.style() method with the HotJS-specific
+	 * expando method added.
+	 */
+	export type HTMLHotStyleElement =
+		HTMLStyleElement & 
+		{
+			/**
+			 * Attaches the <style> element to the same scope as the
+			 * specified Node. This will either be an HTML <head> element,
+			 * or a shadow root, depending on the location of the specified
+			 * Node. If no Node is provided, the <style> element is attached
+			 * to the global <head> element.
+			 */
+			attach(nodeWithinScope?: Node): HTMLHotStyleElement;
+		};
+	
+	/**
 	 * A class that describes the minimal set of members that need to
 	 * be implemented on fake CSSStyleSheet objects in order to create
 	 * a custom hot.js compatible ICSSStyleSheetLike.
@@ -784,8 +854,6 @@ declare namespace Hot
 		string |
 		// Event connections
 		Hot.Event |
-		// Mini CSS style sheet, contains a small group of rules
-		Hot.Sheet |
 		// Immediately invoked closure
 		ElementClosure |
 		// Arrays of Params
@@ -802,7 +870,6 @@ declare namespace Hot
 	/** */
 	export type ShadowParam = 
 		Hot.Event |
-		Hot.Sheet |
 		Hot.ShadowClosure |
 		// Conditionals
 		false | void | null | undefined |
@@ -915,8 +982,14 @@ declare namespace Hot
 
 declare namespace Hot
 {
+	/**
+	 * Defines the prefix that is added to all CSS classes generated
+	 * with the .css() method.
+	 */
+	export const enum GeneratedClassPrefix { value = "--hot--" }
+	
 	/** */
-	export type Sheet = InstanceType<typeof Hot.Sheet>;
+	export type CssParam = string | Hot.Style;
 	
 	/** */
 	export type Style = {

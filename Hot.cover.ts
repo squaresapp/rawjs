@@ -32,10 +32,24 @@ namespace Cover
 	}
 	
 	/** */
+	export function coverHotStyleAttach()
+	{
+		const hot = new Hot();
+		
+		hot.style("DIV", {
+			width: "100px",
+			height: "100px",
+			border: "10px solid green"
+		}).attach();
+		
+		hot.get(document.body)(hot.div());
+	}
+	
+	/** */
 	export function coverHotShadow()
 	{
 		const hot = new Hot();
-		hot.css("DIV", { borderRadius: "20px" }).apply();
+		hot.style("DIV", { borderRadius: "20px" });
 		
 		hot.get(document.body)(
 			hot.div(
@@ -45,7 +59,7 @@ namespace Cover
 					padding: "10px",
 				},
 				hot.shadow(
-					hot.css(
+					hot.style(
 						"DIV",
 						{
 							backgroundColor: "yellow"
@@ -72,6 +86,26 @@ namespace Cover
 				)
 			)
 		);
+	}
+	
+	/** */
+	export function coverHotCssDeduplication()
+	{
+		const hot = new Hot();
+		
+		const insert = () =>
+		{
+			document.body.append(
+				hot.div(
+					hot.css(" P", { color: "red" }),
+					hot.p(hot.text`para1`),
+					hot.p(hot.text`para2`),
+				)
+			);
+		};
+		
+		insert();
+		insert();
 	}
 	
 	/** */

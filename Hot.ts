@@ -707,8 +707,8 @@ class Hot extends (() => Object as any as HotElements)()
 		})();
 		
 		const cls = "hot-style-sheet";
-		const children = Array.from(container.childNodes);
-		const existing = children.find((e) => (e as HTMLElement).classList.contains(cls));
+		const children = Array.from(container.children);
+		const existing = children.find(e => e.classList.contains(cls));
 		
 		if (existing instanceof HTMLStyleElement)
 			return existing;

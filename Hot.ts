@@ -519,17 +519,31 @@ class Hot extends (() => Object as any as HotElements)()
 		
 		const cssText: string[] = [];
 		
+		// Creates a fake CSS rule, whose only purpose is to capture the calls
+		// to setProperty(), and forward the string contents to the cssText array,
+		// so that a string rule can be composed.
+		const fakeRule: Hot.ICSSStyleRuleLike = {
+			style: {
+				setProperty(name, value, important)
+				{
+					cssText.push(name + ": " + value + (important ? " !" + important : "") + ";");
+				}
+			}
+		};
+		
 		for (const group of this.createCssRuleGroups(args))
 		{
-			const style: Hot.Style = Object.assign({}, ...group.styles);
-			const properties = Object.entries(style)
-				.map(([p, v]) => this.toCssDashCase(p) + ": " + v)
-				.join(";");
+			cssText.push(group.selector, "{");
 			
-			cssText.push(group.selector, "{", properties, "}");
+			for (const stylesObject of group.styles)
+				for (let [n, v] of Object.entries(stylesObject))
+					if (typeof v === "string" || (typeof v === "number" && v === v))
+						this.setProperty(fakeRule, n, v, group.selector);
+			
+			cssText.push("}");
 		}
 		
-		element.append(new Text(cssText.join("")))
+		element.append(new Text(cssText.join("")));
 		return element;
 	}
 	
@@ -640,7 +654,7 @@ class Hot extends (() => Object as any as HotElements)()
 	
 	/** */
 	private setProperty(
-		styleable: { style: CSSStyleDeclaration },
+		styleable: Hot.ICSSStyleRuleLike,
 		property: string,
 		value: string | number | (string | number)[],
 		selectorOfContainingRule = "")

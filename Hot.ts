@@ -481,7 +481,7 @@ class Hot extends (() => Object as any as HotElements)()
 	/**
 	 * Creates an HTML <style> element with the specified CSS rules embedded.
 	 */
-	style(firstSelectorComponent: string, ...components: (string | Hot.Style)[]): Hot.HTMLHotStyleElement;
+	style(...components: (string | Hot.Style)[]): Hot.HTMLHotStyleElement;
 	/**
 	 * Creates an HTML <style> element with the specified attributes,
 	 * and with the specified raw CSS text embedded.

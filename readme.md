@@ -61,4 +61,8 @@ document.body.append(
 	)
 );
 ```
-See more examples at the [quickstart](quickstart.md);
+See more examples at the [quickstart](quickstart.md).
+
+## Shameless Plug
+
+Do you need a world class player who can architect complex projects, design & implement beautiful UIs, write production-grade compilers, manage engineering teams, and speak the language of business? I'm available for hourly consulting work. (See my [profile](https://github.com/paul-go) for contact info).

@@ -6,13 +6,11 @@
 
 ## What is HotJS?
 
-Hot stands for **H**TML **O**utputs from **T**ypeScript. It's an **ultra-ergonomic HTML element construction library**. Call functions. Get HTMLElement objects with event bindings and CSS styling attached. That's it.
-
-HotJS differs from jQuery in that HotJS is focused on *creating* new element hierarchies, rather than *querying* already existing ones.
+Hot stands for **H**TML **O**utputs from **T**ypeScript. It's an **ultra-ergonomic HTML element construction library**. Call functions. Create HTMLElement objects with event bindings and CSS styling attached. That's it.
 
 It turns out, this is all you need to create complex interactive UIs. **You don't need React, Vue, Angular, Svelte**, or any of the others. These things are complicated UI sub-systems that run around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. And you have to do things their way, otherwise, the magic won't work.
 
-Frameworks tend to do a lot of reinventing of what you can already do in JavaScript. By making controllers that are just plain TypeScript classes, and using the DOM directly to store your view state, you can drop out the complexities associated with model/view synchronization. Some devs will shudder at this. But this technique can **vastly** reduce complexity, debugging difficulty, and surprising behavior.
+Frameworks tend to do a lot of reinventing of what you can already do in JavaScript. By making controllers that are just plain TypeScript classes, and using the DOM directly to store your view state, you can drop out the complexities associated with model/view synchronization. Some devs will shudder at this. But this technique can **vastly** reduce total project complexity. Code gets easier to debug. Moments of "WTF??" become less frequent. Total project risk goes down.
 
 ## HotJS Features:
 
@@ -26,7 +24,7 @@ Frameworks tend to do a lot of reinventing of what you can already do in JavaScr
 - No **SASS / LESS / PostCSS**. Write your CSS in TypeScript, and get all the benefits of styling becoming just another part of the code.
 - **No more asking StackOverflow: "How do I do X in framework Y?"**. HotJS gives it to you raw. It's just you and the DOM. Do whatever makes sense.
 
-Also: 
+Also:
 
 - HotJS is being used in production (to build the Direct app).
 - Many years in the making. Has passed through many different design variations.

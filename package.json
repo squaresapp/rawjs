@@ -4,8 +4,6 @@
 	"description": "Peacefully simple view layer. Because React is still too complicated.",
 	"version": "1.0.7",
 	"license": "MIT",
-	"main": "./+build/hot.js",
-	"types": "./+build/hot.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/paul-go/hotjs"
@@ -13,21 +11,20 @@
 	"bugs": {
 		"url": "https://github.com/paul-go/hotjs/issues"
 	},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 0",
-		"bundle": "tsc -p tsconfig.release.json && terser ./+build/hot.debug.js > ./+build/hot.min.js",
-		"release": "npm run bundle && np"
-	},
+	"main": "hot.js",
+	"types": "hot.d.ts",
 	"files": [
-		"LICENSE",
+		"LICENSE.txt",
 		"readme.md",
 		"readme-poster.png",
-		"./+build/hot.js",
-		"./+build/hot.min.js",
-		"./+build/hot.d.ts",
-		"./+build/hot.d.ts.map"
+		"hot.js",
+		"hot.min.js",
+		"hot.d.ts",
+		"hot.d.ts.map"
 	],
-	"np": {
-		"contents": "./+build"
-	}
+	"scripts": {
+		"test": "exit 0",
+		"bundle": "tsc -p tsconfig.release.json && terser ./+build/hot.debug.js > ./+build/hot.min.js",
+		"release": "npm run bundle && cd ./+bundle && cp ../package.json ./package.json && np"
+	},
 }

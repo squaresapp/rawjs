@@ -8,20 +8,20 @@
 
 Hot stands for **H**TML **O**utputs from **T**ypeScript. It's an **ultra-ergonomic HTML element construction library**. Call functions. Create HTMLElement objects with event bindings and CSS styling attached. That's it.
 
-It turns out, this is all you need to create complex interactive UIs. **You don't need React, Vue, Angular, Svelte**, or any of the others. These things are complicated UI sub-systems that run around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. And you have to do things their way, otherwise, the magic won't work.
+It turns out, this is all you need to create complex interactive UIs. **You don't need React, Vue, Angular, Svelte**, or any of the others. These things are complicated UI sub-systems that run around behind the scenes and do a bunch of weird magic for you in order to keep your view in sync with your data. You have to do things their way, otherwise, the magic won't work.
 
-Frameworks tend to do a lot of reinventing of what you can already do in JavaScript. By making controllers that are just plain TypeScript classes, and using the DOM directly to store your view state, you can drop out the complexities associated with model/view synchronization. Some devs will shudder at this. But this technique can **vastly** reduce total project complexity. Code gets easier to debug. Moments of "WTF??" become less frequent. Total project risk goes down.
+Frameworks tend to do a lot of reinventing of what you can already do in JavaScript. By making controllers that are just plain TypeScript classes, and using the DOM directly to store your view state, you can cut complexities associated with model/view synchronization. Some devs will shudder at this. But this technique can **vastly** reduce total project complexity. Code gets easier to debug. WTF moments reduce in frequency. Total project risk goes down.
 
 ## HotJS Features:
 
 - No learning curve (assuming you know JavaScript and how to work the DOM).
-- No bloat. The whole library is only **2.3KB**.
 - No props / state / special controller classes that need to be inherited.
 - No weird or unpredictable framework "magic".
+- No bloat. The whole library is only **2.3KB**.
 - No performance overhead.
 - No virtual DOM.
 - No JSX.
-- No **SASS / LESS / PostCSS**. Write your CSS in TypeScript, and get all the benefits of styling becoming just another part of the code.
+- **No external CSS / SASS / LESS** files needed. Write your CSS in TypeScript, and get all the benefits of styling becoming just another part of the code.
 - **No more asking StackOverflow: "How do I do X in framework Y?"**. HotJS gives it to you raw. It's just you and the DOM. Do whatever makes sense.
 
 Also:
@@ -39,7 +39,7 @@ Also:
 ## Installation
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/hotjs@1.0.7/+build/hot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hotjs/hot.min.js"></script>
 ```
 Or
 ```

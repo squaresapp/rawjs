@@ -25,6 +25,6 @@
 	"scripts": {
 		"test": "exit 0",
 		"bundle": "tsc -p tsconfig.release.json && terser ./+build/hot.debug.js > ./+build/hot.min.js",
-		"release": "npm run bundle && cd ./+bundle && cp ../package.json ./package.json && np"
-	},
+		"release": "npm run bundle && cd ./+build && cp ../package.json ./package.json && np"
+	}
 }

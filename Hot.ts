@@ -1297,3 +1297,6 @@ interface CSSStyleDeclaration
 
 //@ts-ignore
 if (typeof module === "object") Object.assign(module.exports, { Hot: Hot });
+
+// ES Module compatibility
+declare module "hotjs" { export = Hot; }

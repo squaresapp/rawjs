@@ -12,6 +12,8 @@
 		"url": "https://github.com/paul-go/hotjs/issues"
 	},
 	"main": "hot.js",
+	"browser": "hot.js",
+	"module": "hot.esm.js",
 	"types": "hot.d.ts",
 	"files": [
 		"LICENSE.txt",
@@ -20,11 +22,13 @@
 		"hot.js",
 		"hot.min.js",
 		"hot.d.ts",
-		"hot.d.ts.map"
+		"hot.d.ts.map",
+		"hot.esm.js"
 	],
 	"scripts": {
 		"test": "exit 0",
-		"bundle": "tsc -p tsconfig.release.json && terser ./+build/hot.debug.js > ./+build/hot.min.js",
+		"esm": "sed 's/\"use strict\";/export/' ./+build/hot.js > ./+build/hot.esm.js",
+		"bundle": "tsc -p tsconfig.release.json && terser ./+build/hot.debug.js > ./+build/hot.min.js && npm run esm",
 		"release": "npm run bundle && cd ./+build && cp ../package.json ./package.json && np"
 	}
 }

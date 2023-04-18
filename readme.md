@@ -46,9 +46,12 @@ Or
 npm install hotjs --save
 ```
 
-## Code Example
+## Usage
 
+For ES Modules usage:
 ```typescript
+import * as hot from "hotjs";
+
 document.body.append(
 	hot.div(
 		{
@@ -59,6 +62,22 @@ document.body.append(
 	)
 );
 ```
+
+For global usage:
+```typescript
+const hot = new Hot();
+
+document.body.append(
+	hot.div(
+		{
+			padding: "100px",
+			background: "red",
+		},
+		hot.on("click", () => alert("Hello world"))
+	)
+);
+```
+
 See more examples at the [quickstart](quickstart.md).
 
 ## Shameless Plug

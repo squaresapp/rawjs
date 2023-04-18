@@ -66,8 +66,6 @@ document.body.append(
 );
 ```
 
-Read this to learn how it knows if you mean an attribute or a style. (TL;DR: It's not complicated and it gets it right 99.9% of the time.)
-
 ## Hierarchies
 
 Passed DOM Node instance are appended. This allows you to construct complex DOM hierarchies without using JSX:

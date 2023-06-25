@@ -45,6 +45,10 @@ Or
 ```
 npm install hotjs --save
 ```
+Or
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/hotjs/hot.esm.js"></script>
+```
 
 ## Usage
 

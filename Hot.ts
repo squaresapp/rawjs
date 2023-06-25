@@ -444,6 +444,9 @@ class Hot extends (() => Object as any as HotElements)()
 			for (let i = this.awaitingConnection.length; i-- > 0;)
 			{
 				const tuple = this.awaitingConnection[i];
+				if (!tuple[0].isConnected)
+					continue;
+				
 				this.awaitingConnection.splice(i, 1);
 				invokations.push(tuple);
 			}

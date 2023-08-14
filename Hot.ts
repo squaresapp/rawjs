@@ -421,7 +421,8 @@ class Hot extends (() => Object as any as HotElements)()
 					hev.handler(ev as any);
 				else
 					target.removeEventListener(hev.type, handler);
-			});
+			},
+			options);
 		}
 		
 		return hev;

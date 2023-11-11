@@ -2,127 +2,127 @@
 /**
  * 
  */
-interface HotElements
+interface RawElements
 {
-	a(...params: Hot.Param<Hot.AnchorElementAttribute>[]): HTMLAnchorElement;
-	abbr(...params: Hot.Param[]): HTMLElement;
-	address(...params: Hot.Param[]): HTMLElement;
-	area(...params: Hot.Param[]): HTMLAreaElement;
-	article(...params: Hot.Param[]): HTMLElement;
-	aside(...params: Hot.Param[]): HTMLElement;
-	audio(...params: Hot.Param[]): HTMLAudioElement;
-	b(...params: Hot.Param[]): HTMLElement;
-	base(...params: Hot.Param<Hot.BaseElementAttribute>[]): HTMLBaseElement;
-	bdi(...params: Hot.Param[]): HTMLElement;
-	bdo(...params: Hot.Param[]): HTMLElement;
-	blockquote(...params: Hot.Param[]): HTMLQuoteElement;
-	body(...params: Hot.Param[]): HTMLBodyElement;
-	br(...params: Hot.Param[]): HTMLBRElement;
-	button(...params: Hot.Param[]): HTMLButtonElement;
-	canvas(...params: Hot.Param[]): HTMLCanvasElement;
-	caption(...params: Hot.Param[]): HTMLTableCaptionElement;
-	cite(...params: Hot.Param[]): HTMLElement;
-	code(...params: Hot.Param[]): HTMLElement;
-	col(...params: Hot.Param[]): HTMLTableColElement;
-	colgroup(...params: Hot.Param[]): HTMLTableColElement;
-	data(...params: Hot.Param[]): HTMLDataElement;
-	datalist(...params: Hot.Param[]): HTMLDataListElement;
-	dd(...params: Hot.Param[]): HTMLElement;
-	del(...params: Hot.Param[]): HTMLModElement;
-	details(...params: Hot.Param[]): HTMLDetailsElement;
-	dfn(...params: Hot.Param[]): HTMLElement;
-	dialog(...params: Hot.Param[]): HTMLDialogElement;
-	dir(...params: Hot.Param[]): HTMLDirectoryElement;
-	div(...params: Hot.Param[]): HTMLDivElement;
-	dl(...params: Hot.Param[]): HTMLDListElement;
-	dt(...params: Hot.Param[]): HTMLElement;
-	em(...params: Hot.Param[]): HTMLElement;
-	embed(...params: Hot.Param[]): HTMLEmbedElement;
-	fieldset(...params: Hot.Param[]): HTMLFieldSetElement;
-	figcaption(...params: Hot.Param[]): HTMLElement;
-	figure(...params: Hot.Param[]): HTMLElement;
-	font(...params: Hot.Param[]): HTMLFontElement;
-	footer(...params: Hot.Param[]): HTMLElement;
-	form(...params: Hot.Param[]): HTMLFormElement;
-	frame(...params: Hot.Param[]): HTMLFrameElement;
-	frameset(...params: Hot.Param[]): HTMLFrameSetElement;
-	h1(...params: Hot.Param[]): HTMLHeadingElement;
-	h2(...params: Hot.Param[]): HTMLHeadingElement;
-	h3(...params: Hot.Param[]): HTMLHeadingElement;
-	h4(...params: Hot.Param[]): HTMLHeadingElement;
-	h5(...params: Hot.Param[]): HTMLHeadingElement;
-	h6(...params: Hot.Param[]): HTMLHeadingElement;
-	head(...params: Hot.Param[]): HTMLHeadElement;
-	header(...params: Hot.Param[]): HTMLElement;
-	hgroup(...params: Hot.Param[]): HTMLElement;
-	hr(...params: Hot.Param[]): HTMLHRElement;
-	i(...params: Hot.Param[]): HTMLElement;
-	iframe(...params: Hot.Param<Hot.FrameElementAttribute>[]): HTMLIFrameElement;
-	img(...params: Hot.Param<Hot.ImageElementAttribute>[]): HTMLImageElement;
-	input(...params: Hot.Param<Hot.InputElementAttribute>[]): HTMLInputElement;
-	ins(...params: Hot.Param[]): HTMLModElement;
-	kbd(...params: Hot.Param[]): HTMLElement;
-	label(...params: Hot.Param[]): HTMLLabelElement;
-	legend(...params: Hot.Param[]): HTMLLegendElement;
-	li(...params: Hot.Param[]): HTMLLIElement;
-	link(...params: Hot.Param<Hot.LinkElementAttribute>[]): HTMLLinkElement;
-	main(...params: Hot.Param[]): HTMLElement;
-	map(...params: Hot.Param[]): HTMLMapElement;
-	mark(...params: Hot.Param[]): HTMLElement;
-	marquee(...params: Hot.Param[]): HTMLMarqueeElement;
-	menu(...params: Hot.Param[]): HTMLMenuElement;
-	meta(...params: Hot.Param<Hot.MetaElementAttribute>[]): HTMLMetaElement;
-	meter(...params: Hot.Param[]): HTMLMeterElement;
-	nav(...params: Hot.Param[]): HTMLElement;
-	noscript(...params: Hot.Param[]): HTMLElement;
-	object(...params: Hot.Param[]): HTMLObjectElement;
-	ol(...params: Hot.Param[]): HTMLOListElement;
-	optgroup(...params: Hot.Param[]): HTMLOptGroupElement;
-	option(...params: Hot.Param[]): HTMLOptionElement;
-	output(...params: Hot.Param[]): HTMLOutputElement;
-	p(...params: Hot.Param[]): HTMLParagraphElement;
-	param(...params: Hot.Param[]): HTMLParamElement;
-	picture(...params: Hot.Param[]): HTMLPictureElement;
-	pre(...params: Hot.Param[]): HTMLPreElement;
-	progress(...params: Hot.Param[]): HTMLProgressElement;
-	q(...params: Hot.Param[]): HTMLQuoteElement;
-	rp(...params: Hot.Param[]): HTMLElement;
-	rt(...params: Hot.Param[]): HTMLElement;
-	ruby(...params: Hot.Param[]): HTMLElement;
-	s(...params: Hot.Param[]): HTMLElement;
-	samp(...params: Hot.Param[]): HTMLElement;
-	script(...params: Hot.Param<Hot.ScriptElementAttribute>[]): HTMLScriptElement;
-	section(...params: Hot.Param[]): HTMLElement;
-	select(...params: Hot.Param[]): HTMLSelectElement;
-	slot(...params: Hot.Param[]): HTMLSlotElement;
-	small(...params: Hot.Param[]): HTMLElement;
-	source(...params: Hot.Param[]): HTMLSourceElement;
-	span(...params: Hot.Param[]): HTMLSpanElement;
-	strong(...params: Hot.Param[]): HTMLElement;
-	sub(...params: Hot.Param[]): HTMLElement;
-	summary(...params: Hot.Param[]): HTMLElement;
-	sup(...params: Hot.Param[]): HTMLElement;
-	table(...params: Hot.Param[]): HTMLTableElement;
-	tbody(...params: Hot.Param[]): HTMLTableSectionElement;
-	td(...params: Hot.Param[]): HTMLTableCellElement;
-	template(...params: Hot.Param[]): HTMLTemplateElement;
-	textarea(...params: Hot.Param[]): HTMLTextAreaElement;
-	tfoot(...params: Hot.Param[]): HTMLTableSectionElement;
-	th(...params: Hot.Param[]): HTMLTableCellElement;
-	thead(...params: Hot.Param[]): HTMLTableSectionElement;
-	time(...params: Hot.Param[]): HTMLTimeElement;
-	title(...params: Hot.Param[]): HTMLTitleElement;
-	tr(...params: Hot.Param[]): HTMLTableRowElement;
-	track(...params: Hot.Param[]): HTMLTrackElement;
-	u(...params: Hot.Param[]): HTMLElement;
-	ul(...params: Hot.Param[]): HTMLUListElement;
-	video(...params: Hot.Param<Hot.VideoElementAttribute>[]): HTMLVideoElement;
-	wbr(...params: Hot.Param[]): HTMLElement;
+	a(...params: Raw.Param<Raw.AnchorElementAttribute>[]): HTMLAnchorElement;
+	abbr(...params: Raw.Param[]): HTMLElement;
+	address(...params: Raw.Param[]): HTMLElement;
+	area(...params: Raw.Param[]): HTMLAreaElement;
+	article(...params: Raw.Param[]): HTMLElement;
+	aside(...params: Raw.Param[]): HTMLElement;
+	audio(...params: Raw.Param[]): HTMLAudioElement;
+	b(...params: Raw.Param[]): HTMLElement;
+	base(...params: Raw.Param<Raw.BaseElementAttribute>[]): HTMLBaseElement;
+	bdi(...params: Raw.Param[]): HTMLElement;
+	bdo(...params: Raw.Param[]): HTMLElement;
+	blockquote(...params: Raw.Param[]): HTMLQuoteElement;
+	body(...params: Raw.Param[]): HTMLBodyElement;
+	br(...params: Raw.Param[]): HTMLBRElement;
+	button(...params: Raw.Param[]): HTMLButtonElement;
+	canvas(...params: Raw.Param[]): HTMLCanvasElement;
+	caption(...params: Raw.Param[]): HTMLTableCaptionElement;
+	cite(...params: Raw.Param[]): HTMLElement;
+	code(...params: Raw.Param[]): HTMLElement;
+	col(...params: Raw.Param[]): HTMLTableColElement;
+	colgroup(...params: Raw.Param[]): HTMLTableColElement;
+	data(...params: Raw.Param[]): HTMLDataElement;
+	datalist(...params: Raw.Param[]): HTMLDataListElement;
+	dd(...params: Raw.Param[]): HTMLElement;
+	del(...params: Raw.Param[]): HTMLModElement;
+	details(...params: Raw.Param[]): HTMLDetailsElement;
+	dfn(...params: Raw.Param[]): HTMLElement;
+	dialog(...params: Raw.Param[]): HTMLDialogElement;
+	dir(...params: Raw.Param[]): HTMLDirectoryElement;
+	div(...params: Raw.Param[]): HTMLDivElement;
+	dl(...params: Raw.Param[]): HTMLDListElement;
+	dt(...params: Raw.Param[]): HTMLElement;
+	em(...params: Raw.Param[]): HTMLElement;
+	embed(...params: Raw.Param[]): HTMLEmbedElement;
+	fieldset(...params: Raw.Param[]): HTMLFieldSetElement;
+	figcaption(...params: Raw.Param[]): HTMLElement;
+	figure(...params: Raw.Param[]): HTMLElement;
+	font(...params: Raw.Param[]): HTMLFontElement;
+	footer(...params: Raw.Param[]): HTMLElement;
+	form(...params: Raw.Param[]): HTMLFormElement;
+	frame(...params: Raw.Param[]): HTMLFrameElement;
+	frameset(...params: Raw.Param[]): HTMLFrameSetElement;
+	h1(...params: Raw.Param[]): HTMLHeadingElement;
+	h2(...params: Raw.Param[]): HTMLHeadingElement;
+	h3(...params: Raw.Param[]): HTMLHeadingElement;
+	h4(...params: Raw.Param[]): HTMLHeadingElement;
+	h5(...params: Raw.Param[]): HTMLHeadingElement;
+	h6(...params: Raw.Param[]): HTMLHeadingElement;
+	head(...params: Raw.Param[]): HTMLHeadElement;
+	header(...params: Raw.Param[]): HTMLElement;
+	hgroup(...params: Raw.Param[]): HTMLElement;
+	hr(...params: Raw.Param[]): HTMLHRElement;
+	i(...params: Raw.Param[]): HTMLElement;
+	iframe(...params: Raw.Param<Raw.FrameElementAttribute>[]): HTMLIFrameElement;
+	img(...params: Raw.Param<Raw.ImageElementAttribute>[]): HTMLImageElement;
+	input(...params: Raw.Param<Raw.InputElementAttribute>[]): HTMLInputElement;
+	ins(...params: Raw.Param[]): HTMLModElement;
+	kbd(...params: Raw.Param[]): HTMLElement;
+	label(...params: Raw.Param[]): HTMLLabelElement;
+	legend(...params: Raw.Param[]): HTMLLegendElement;
+	li(...params: Raw.Param[]): HTMLLIElement;
+	link(...params: Raw.Param<Raw.LinkElementAttribute>[]): HTMLLinkElement;
+	main(...params: Raw.Param[]): HTMLElement;
+	map(...params: Raw.Param[]): HTMLMapElement;
+	mark(...params: Raw.Param[]): HTMLElement;
+	marquee(...params: Raw.Param[]): HTMLMarqueeElement;
+	menu(...params: Raw.Param[]): HTMLMenuElement;
+	meta(...params: Raw.Param<Raw.MetaElementAttribute>[]): HTMLMetaElement;
+	meter(...params: Raw.Param[]): HTMLMeterElement;
+	nav(...params: Raw.Param[]): HTMLElement;
+	noscript(...params: Raw.Param[]): HTMLElement;
+	object(...params: Raw.Param[]): HTMLObjectElement;
+	ol(...params: Raw.Param[]): HTMLOListElement;
+	optgroup(...params: Raw.Param[]): HTMLOptGroupElement;
+	option(...params: Raw.Param[]): HTMLOptionElement;
+	output(...params: Raw.Param[]): HTMLOutputElement;
+	p(...params: Raw.Param[]): HTMLParagraphElement;
+	param(...params: Raw.Param[]): HTMLParamElement;
+	picture(...params: Raw.Param[]): HTMLPictureElement;
+	pre(...params: Raw.Param[]): HTMLPreElement;
+	progress(...params: Raw.Param[]): HTMLProgressElement;
+	q(...params: Raw.Param[]): HTMLQuoteElement;
+	rp(...params: Raw.Param[]): HTMLElement;
+	rt(...params: Raw.Param[]): HTMLElement;
+	ruby(...params: Raw.Param[]): HTMLElement;
+	s(...params: Raw.Param[]): HTMLElement;
+	samp(...params: Raw.Param[]): HTMLElement;
+	script(...params: Raw.Param<Raw.ScriptElementAttribute>[]): HTMLScriptElement;
+	section(...params: Raw.Param[]): HTMLElement;
+	select(...params: Raw.Param[]): HTMLSelectElement;
+	slot(...params: Raw.Param[]): HTMLSlotElement;
+	small(...params: Raw.Param[]): HTMLElement;
+	source(...params: Raw.Param[]): HTMLSourceElement;
+	span(...params: Raw.Param[]): HTMLSpanElement;
+	strong(...params: Raw.Param[]): HTMLElement;
+	sub(...params: Raw.Param[]): HTMLElement;
+	summary(...params: Raw.Param[]): HTMLElement;
+	sup(...params: Raw.Param[]): HTMLElement;
+	table(...params: Raw.Param[]): HTMLTableElement;
+	tbody(...params: Raw.Param[]): HTMLTableSectionElement;
+	td(...params: Raw.Param[]): HTMLTableCellElement;
+	template(...params: Raw.Param[]): HTMLTemplateElement;
+	textarea(...params: Raw.Param[]): HTMLTextAreaElement;
+	tfoot(...params: Raw.Param[]): HTMLTableSectionElement;
+	th(...params: Raw.Param[]): HTMLTableCellElement;
+	thead(...params: Raw.Param[]): HTMLTableSectionElement;
+	time(...params: Raw.Param[]): HTMLTimeElement;
+	title(...params: Raw.Param[]): HTMLTitleElement;
+	tr(...params: Raw.Param[]): HTMLTableRowElement;
+	track(...params: Raw.Param[]): HTMLTrackElement;
+	u(...params: Raw.Param[]): HTMLElement;
+	ul(...params: Raw.Param[]): HTMLUListElement;
+	video(...params: Raw.Param<Raw.VideoElementAttribute>[]): HTMLVideoElement;
+	wbr(...params: Raw.Param[]): HTMLElement;
 	
-	new(): HotElements;
+	new(): RawElements;
 }
 
-class Hot extends (() => Object as any as HotElements)()
+class Raw extends (() => Object as any as RawElements)()
 {
 	/** */
 	static readonly elements = ["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "slot", "small", "source", "span", "strong", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "video", "wbr",
@@ -131,14 +131,14 @@ class Hot extends (() => Object as any as HotElements)()
 	/**
 	 * 
 	 */
-	constructor(private readonly provider: Hot.INodeProvider = {})
+	constructor(private readonly provider: Raw.INodeProvider = {})
 	{
 		super();
 		
-		for (const name of Hot.elements)
+		for (const name of Raw.elements)
 		{
 			Object.defineProperty(this, name, {
-				value: (...params: Hot.Param[]) =>
+				value: (...params: Raw.Param[]) =>
 				{
 					const element = 
 						provider.createElement?.(name) ||
@@ -168,21 +168,21 @@ class Hot extends (() => Object as any as HotElements)()
 	}
 	
 	/**
-	 * Creates a new Hot context from the specified Element or series of Elements.
+	 * Creates a new Raw context from the specified Element or series of Elements.
 	 */
-	get<T extends Element | Hot.HatLike>(e: T, ...others: Element[]): (...params: Hot.Param[]) => T;
-	get<T extends ShadowRoot>(e: T, ...others: Element[]): (...params: Hot.ShadowParam[]) => T;
+	get<T extends Element | Raw.HatLike>(e: T, ...others: Element[]): (...params: Raw.Param[]) => T;
+	get<T extends ShadowRoot>(e: T, ...others: Element[]): (...params: Raw.ShadowParam[]) => T;
 	get<T>(...elements: T[]): any
 	{
-		return (...params: Hot.Param[]) =>
+		return (...params: Raw.Param[]) =>
 		{
 			for (const e of elements)
 			{
-				if (Hot.is.element(e) || Hot.is.shadow(e))
+				if (Raw.is.element(e) || Raw.is.shadow(e))
 					this.apply(e as Element, params);
 				
-				else if (Hot.is.element((e as any as Hot.HatLike).head))
-					this.apply((e as any as Hot.HatLike).head, params);
+				else if (Raw.is.element((e as any as Raw.HatLike).head))
+					this.apply((e as any as Raw.HatLike).head, params);
 			}
 			
 			return elements[0] || null;
@@ -210,24 +210,24 @@ class Hot extends (() => Object as any as HotElements)()
 		},
 		shadow(c: any): c is ShadowRoot
 		{
-			return !!c && (c as ShadowRoot).nodeType === 11 && Hot.is.element(c.host);
+			return !!c && (c as ShadowRoot).nodeType === 11 && Raw.is.element(c.host);
 		},
 	});
 	
 	/**
 	 * 
 	 */
-	shadow(...params: Hot.ShadowParam[]): Hot.Param
+	shadow(...params: Raw.ShadowParam[]): Raw.Param
 	{
 		return e =>
 		{
 			const shadow = e.shadowRoot || e.attachShadow({ mode: "open" });
-			this.apply(shadow, params as Hot.Param[]);
+			this.apply(shadow, params as Raw.Param[]);
 		};
 	}
 	
 	/** */
-	private apply(e: Element | ShadowRoot, params: Hot.Param[])
+	private apply(e: Element | ShadowRoot, params: Raw.Param[])
 	{
 		if (this.cssPropertySet === null)
 		{
@@ -249,7 +249,7 @@ class Hot extends (() => Object as any as HotElements)()
 			if (!param)
 				continue;
 			
-			if (Hot.is.node(param))
+			if (Raw.is.node(param))
 			{
 				e.append(param);
 			}
@@ -259,11 +259,11 @@ class Hot extends (() => Object as any as HotElements)()
 			}
 			else switch (param.constructor)
 			{
-				case Hot.Event:
+				case Raw.Event:
 				{
 					if (e)
 					{
-						const he = param as Hot.Event;
+						const he = param as Raw.Event;
 						if (he.target)
 							he.host = e;
 						else
@@ -282,10 +282,10 @@ class Hot extends (() => Object as any as HotElements)()
 					const classes = cls.split(/\s+/g);
 					(e as Element).classList.add(...classes);
 					
-					if (cls.indexOf(Hot.GeneratedClassPrefix.value) === 0)
+					if (cls.indexOf(Raw.GeneratedClassPrefix.value) === 0)
 					{
 						const maybeShadow = e.getRootNode();
-						if (Hot.is.shadow(maybeShadow))
+						if (Raw.is.shadow(maybeShadow))
 							this.toShadow(maybeShadow, cls);
 					}
 				}
@@ -331,7 +331,7 @@ class Hot extends (() => Object as any as HotElements)()
 				}
 				break; case Function:
 				{
-					if (Hot.is.element(e) || Hot.is.shadow(e))
+					if (Raw.is.element(e) || Raw.is.shadow(e))
 					{
 						const fn = param as Function;
 						const subParams = fn(e);
@@ -384,16 +384,16 @@ class Hot extends (() => Object as any as HotElements)()
 	}
 	
 	/** */
-	on<K extends keyof Hot.ExtendedEventMap>(
+	on<K extends keyof Raw.ExtendedEventMap>(
 		type: K,
-		listener: (this: HTMLElement, ev: Hot.ExtendedEventMap[K]) => any,
-		options?: boolean | EventListenerOptions): Hot.Event;
+		listener: (this: HTMLElement, ev: Raw.ExtendedEventMap[K]) => any,
+		options?: boolean | EventListenerOptions): Raw.Event;
 	/** */
-	on<K extends keyof Hot.EventMap>(
+	on<K extends keyof Raw.EventMap>(
 		remoteTarget: Node | Window,
 		type: K,
-		listener: (this: HTMLElement, ev: Hot.EventMap[K]) => any,
-		options?: boolean | EventListenerOptions): Hot.Event;
+		listener: (this: HTMLElement, ev: Raw.EventMap[K]) => any,
+		options?: boolean | EventListenerOptions): Raw.Event;
 	/** */
 	on(...args: any[])
 	{
@@ -409,7 +409,7 @@ class Hot extends (() => Object as any as HotElements)()
 			options.once = true;
 		}
 		
-		const hev = new Hot.Event(target, type, handler, options);
+		const hev = new Raw.Event(target, type, handler, options);
 		
 		// If the event has a defined target, then add the event listener right away,
 		// and the apply() function will assign any host element, if present.
@@ -482,24 +482,24 @@ class Hot extends (() => Object as any as HotElements)()
 	 * Creates an HTML <style> element with the specified attributes,
 	 * and with the specified CSS rules embedded.
 	 */
-	style(attributes: Hot.ElementAttribute, ...components: (string | Hot.Style)[]): Hot.HTMLHotStyleElement;
+	style(attributes: Raw.ElementAttribute, ...components: (string | Raw.Style)[]): Raw.HTMLRawStyleElement;
 	/**
 	 * Creates an HTML <style> element with the specified CSS rules embedded.
 	 */
-	style(...components: (string | Hot.Style)[]): Hot.HTMLHotStyleElement;
+	style(...components: (string | Raw.Style)[]): Raw.HTMLRawStyleElement;
 	/**
 	 * Creates an HTML <style> element with the specified attributes,
 	 * and with the specified raw CSS text embedded.
 	 */
-	style(attributes: Hot.ElementAttribute, ...rawCss: Text[]): Hot.HTMLHotStyleElement;
+	style(attributes: Raw.ElementAttribute, ...rawCss: Text[]): Raw.HTMLRawStyleElement;
 	/**
 	 * Creates an HTML <style> element that contains the specified raw CSS text embedded.
 	 */
-	style(...rawCss: Text[]): Hot.HTMLHotStyleElement;
+	style(...rawCss: Text[]): Raw.HTMLRawStyleElement;
 	style(...args: any[])
 	{
 		const element = 
-			(this.provider.createElement?.("style") as Hot.HTMLHotStyleElement) ||
+			(this.provider.createElement?.("style") as Raw.HTMLRawStyleElement) ||
 			document.createElement("style");
 		
 		element.attach = function(n?: Node)
@@ -516,7 +516,7 @@ class Hot extends (() => Object as any as HotElements)()
 		if (typeof args[0] !== "string")
 			this.get(element)(args.shift());
 		
-		if (args.every(a => Hot.is.text(a)))
+		if (args.every(a => Raw.is.text(a)))
 		{
 			element.append(...args);
 			return element;
@@ -527,7 +527,7 @@ class Hot extends (() => Object as any as HotElements)()
 		// Creates a fake CSS rule, whose only purpose is to capture the calls
 		// to setProperty(), and forward the string contents to the cssText array,
 		// so that a string rule can be composed.
-		const fakeRule: Hot.ICSSStyleRuleLike = {
+		const fakeRule: Raw.ICSSStyleRuleLike = {
 			style: {
 				setProperty(name, value, important)
 				{
@@ -557,12 +557,12 @@ class Hot extends (() => Object as any as HotElements)()
 	 * can be applied to HTML elements in order to apply the rules to
 	 * them.
 	 */
-	css(...components: Hot.CssParam[])
+	css(...components: Raw.CssParam[])
 	{
 		const styleElement = this.getScopedStyleElement(document);
 		const cssJsonText = JSON.stringify(components);
 		components = JSON.parse(cssJsonText);
-		const cssHashClass = Hot.GeneratedClassPrefix.value + this.hash(cssJsonText);
+		const cssHashClass = Raw.GeneratedClassPrefix.value + this.hash(cssJsonText);
 		this.applyCssToScope(styleElement, cssHashClass, components);
 		return cssHashClass;
 	}
@@ -575,7 +575,7 @@ class Hot extends (() => Object as any as HotElements)()
 	private toShadow(shadow: ShadowRoot, cssHashClass: string)
 	{
 		const styleElement = this.getScopedStyleElement(shadow);
-		const cssParams = Hot.ruleData.get(styleElement)?.get(cssHashClass);
+		const cssParams = Raw.ruleData.get(styleElement)?.get(cssHashClass);
 		if (cssParams)
 			this.applyCssToScope(styleElement, cssHashClass, cssParams);
 	}
@@ -584,12 +584,12 @@ class Hot extends (() => Object as any as HotElements)()
 	private applyCssToScope(
 		styleElement: HTMLStyleElement,
 		cssHashClass: string,
-		components: Hot.CssParam[])
+		components: Raw.CssParam[])
 	{
 		// Don't create another CSS rule if there is already one
 		// that exists within the provided <style> element with
 		// the provided rule hash.
-		if (Hot.ruleData.get(styleElement)?.get(cssHashClass))
+		if (Raw.ruleData.get(styleElement)?.get(cssHashClass))
 			return;
 		
 		const sheet = styleElement.sheet!;
@@ -621,23 +621,23 @@ class Hot extends (() => Object as any as HotElements)()
 						this.setProperty(cssRule, n, v, group.selector);
 		}
 		
-		let hashSet = Hot.ruleData.get(styleElement);
+		let hashSet = Raw.ruleData.get(styleElement);
 		if (hashSet)
 			hashSet.set(cssHashClass, components);
 		else
-			Hot.ruleData.set(styleElement, hashSet = new Map([[cssHashClass, components]]));
+			Raw.ruleData.set(styleElement, hashSet = new Map([[cssHashClass, components]]));
 	}
 	
 	/**
 	 * Stores a WeakMap of Sets of the hashes of the contents of each CSS rule
 	 * that has been applied to a given generated <style> element.
 	 */
-	private static readonly ruleData = new WeakMap<HTMLStyleElement, Map<string, Hot.CssParam[]>>();
+	private static readonly ruleData = new WeakMap<HTMLStyleElement, Map<string, Raw.CssParam[]>>();
 	
 	/** */
-	private createCssRuleGroups(components: readonly (string | Hot.Style)[])
+	private createCssRuleGroups(components: readonly (string | Raw.Style)[])
 	{
-		const groups: { selector: string, styles: Hot.Style[] }[] = [{ selector: "", styles: [] }];
+		const groups: { selector: string, styles: Raw.Style[] }[] = [{ selector: "", styles: [] }];
 		for (let i = -1; ++i < components.length;)
 		{
 			const cur = components[i];
@@ -659,7 +659,7 @@ class Hot extends (() => Object as any as HotElements)()
 	
 	/** */
 	private setProperty(
-		styleable: Hot.ICSSStyleRuleLike,
+		styleable: Raw.ICSSStyleRuleLike,
 		property: string,
 		value: string | number | (string | number)[],
 		selectorOfContainingRule = "")
@@ -716,7 +716,7 @@ class Hot extends (() => Object as any as HotElements)()
 	{
 		let container: ParentNode = (() =>
 		{
-			if (Hot.is.shadow(applyTarget))
+			if (Raw.is.shadow(applyTarget))
 				return applyTarget;
 			
 			const root = applyTarget.getRootNode();
@@ -725,7 +725,7 @@ class Hot extends (() => Object as any as HotElements)()
 				root as ShadowRoot;
 		})();
 		
-		const cls = "hot-style-sheet";
+		const cls = "raw-style-sheet";
 		const children = Array.from(container.children);
 		const existing = children.find(e => e.classList.contains(cls));
 		
@@ -761,10 +761,10 @@ class Hot extends (() => Object as any as HotElements)()
 	}
 }
 
-declare namespace Hot
+declare namespace Raw
 {
 	/**
-	 * A class that can be passed to the Hot constructor in order to
+	 * A class that can be passed to the Raw constructor in order to
 	 * provide a way to override the functions that are called to construct
 	 * DOM objects. 
 	 */
@@ -787,7 +787,7 @@ declare namespace Hot
 
 //# Element Related
 
-declare namespace Hot
+declare namespace Raw
 {
 	/**
 	 * Fake node class, which is compatible with the actual Node interface,
@@ -809,7 +809,7 @@ declare namespace Hot
 	/**
 	 * A class that describes the minimal set of members that need to
 	 * be implemented on HTML elements in order to create a custom
-	 * hot.js compatible IHTMLElementLike.
+	 * raw.js compatible IHTMLElementLike.
 	 */
 	export interface IHTMLElementLike extends INodeLike
 	{
@@ -825,10 +825,10 @@ declare namespace Hot
 	
 	/**
 	 * A type that describes the special HTMLStyleElement that is
-	 * returned from the hot.style() method with the HotJS-specific
+	 * returned from the raw.style() method with the RawJS-specific
 	 * expando method added.
 	 */
-	export type HTMLHotStyleElement =
+	export type HTMLRawStyleElement =
 		HTMLStyleElement & 
 		{
 			/**
@@ -838,13 +838,13 @@ declare namespace Hot
 			 * Node. If no Node is provided, the <style> element is attached
 			 * to the global <head> element.
 			 */
-			attach(nodeWithinScope?: Node): HTMLHotStyleElement;
+			attach(nodeWithinScope?: Node): HTMLRawStyleElement;
 		};
 	
 	/**
 	 * A class that describes the minimal set of members that need to
 	 * be implemented on fake CSSStyleSheet objects in order to create
-	 * a custom hot.js compatible ICSSStyleSheetLike.
+	 * a custom raw.js compatible ICSSStyleSheetLike.
 	 */
 	export interface ICSSStyleSheetLike
 	{
@@ -858,7 +858,7 @@ declare namespace Hot
 	/**
 	 * A class that describes the minimal set of members that need to
 	 * be implemented on fake CSSStyleRule objects in order to create
-	 * a custom hot.js compatible ICSSStyleRuleLike.
+	 * a custom raw.js compatible ICSSStyleRuleLike.
 	 */
 	export interface ICSSStyleRuleLike
 	{
@@ -872,7 +872,7 @@ declare namespace Hot
 		// Single class name
 		string |
 		// Event connections
-		Hot.Event |
+		Raw.Event |
 		// Immediately invoked closure
 		ElementClosure |
 		// Arrays of Params
@@ -888,8 +888,8 @@ declare namespace Hot
 	
 	/** */
 	export type ShadowParam = 
-		Hot.Event |
-		Hot.ShadowClosure |
+		Raw.Event |
+		Raw.ShadowClosure |
 		// Conditionals
 		false | void | null | undefined |
 		// Arrays of Params
@@ -999,16 +999,16 @@ declare namespace Hot
 
 //# Style Related
 
-declare namespace Hot
+declare namespace Raw
 {
 	/**
 	 * Defines the prefix that is added to all CSS classes generated
 	 * with the .css() method.
 	 */
-	export const enum GeneratedClassPrefix { value = "--hot--" }
+	export const enum GeneratedClassPrefix { value = "--raw--" }
 	
 	/** */
-	export type CssParam = string | Hot.Style;
+	export type CssParam = string | Raw.Style;
 	
 	/** */
 	export type Style = {
@@ -1173,10 +1173,10 @@ declare namespace Hot
 
 //# Event Related
 
-declare namespace Hot
+declare namespace Raw
 {
 	/** */
-	export type Event = InstanceType<typeof Hot.Event>;
+	export type Event = InstanceType<typeof Raw.Event>;
 	
 	/** */
 	export interface EventMap extends HTMLElementEventMap
@@ -1301,7 +1301,7 @@ interface CSSStyleDeclaration
 }
 
 //@ts-ignore
-if (typeof module === "object") Object.assign(module.exports, { Hot: Hot });
+if (typeof module === "object") Object.assign(module.exports, { Raw: Raw });
 
 // ES Module compatibility
-declare module "hotjs" { export = Hot; }
+declare module "rawjs" { export = Raw; }

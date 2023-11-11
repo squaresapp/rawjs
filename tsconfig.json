@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"outFile": "+build/hot.debug.js",
+		"outFile": "+build/raw.debug.js",
 		"composite": true,
 		"module": "system",
 		"moduleResolution": "node",

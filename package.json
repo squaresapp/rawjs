@@ -1,34 +1,34 @@
 {
-	"name": "hotjs",
+	"name": "rawjs",
 	"author": "Paul Gordon",
 	"description": "Peacefully simple view layer. Because React is still too complicated.",
 	"version": "1.0.8",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/paul-go/hotjs"
+		"url": "https://github.com/scrollapp/rawjs"
 	},
 	"bugs": {
-		"url": "https://github.com/paul-go/hotjs/issues"
+		"url": "https://github.com/scrollapp/rawjs/issues"
 	},
-	"main": "hot.js",
-	"browser": "hot.js",
-	"module": "hot.esm.js",
-	"types": "hot.d.ts",
+	"main": "raw.js",
+	"browser": "raw.js",
+	"module": "raw.esm.js",
+	"types": "raw.d.ts",
 	"files": [
 		"LICENSE.txt",
 		"readme.md",
 		"readme-poster.png",
-		"hot.js",
-		"hot.min.js",
-		"hot.d.ts",
-		"hot.d.ts.map",
-		"hot.esm.js"
+		"raw.js",
+		"raw.min.js",
+		"raw.d.ts",
+		"raw.d.ts.map",
+		"raw.esm.js"
 	],
 	"scripts": {
 		"test": "exit 0",
-		"esm": "sed 's/\"use strict\";/export/' ./+build/hot.js > ./+build/hot.esm.js",
-		"bundle": "tsc -p tsconfig.release.json && terser ./+build/hot.debug.js > ./+build/hot.min.js && npm run esm",
+		"esm": "sed 's/\"use strict\";/export/' ./+build/raw.js > ./+build/raw.esm.js",
+		"bundle": "tsc -p tsconfig.release.json && terser ./+build/raw.debug.js > ./+build/raw.min.js && npm run esm",
 		"release": "npm run bundle && cd ./+build && cp ../package.json ./package.json && np"
 	}
 }

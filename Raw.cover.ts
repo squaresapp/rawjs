@@ -2,9 +2,9 @@
 namespace Cover
 {
 	/** */
-	export function coverHot()
+	export function coverRaw()
 	{
-		const hot = new Hot({
+		const raw = new Raw({
 			createElement(tagName)
 			{
 				return document.createElement(tagName);
@@ -17,13 +17,13 @@ namespace Cover
 	}
 	
 	/** */
-	export function coverHotConnectedEvent()
+	export function coverRawConnectedEvent()
 	{
-		const hot = new Hot();
+		const raw = new Raw();
 		
-		hot.get(document.body)(
-			hot.section(
-				hot.on("connected", () =>
+		raw.get(document.body)(
+			raw.section(
+				raw.on("connected", () =>
 				{
 					console.log("connected");
 				})
@@ -32,40 +32,40 @@ namespace Cover
 	}
 	
 	/** */
-	export function coverHotStyleAttach()
+	export function coverRawStyleAttach()
 	{
-		const hot = new Hot();
+		const raw = new Raw();
 		
-		hot.style("DIV", {
+		raw.style("DIV", {
 			width: "100px",
 			height: "100px",
 			border: "10px solid green"
 		}).attach();
 		
-		hot.get(document.body)(hot.div());
+		raw.get(document.body)(raw.div());
 	}
 	
 	/** */
-	export function coverHotShadow()
+	export function coverRawShadow()
 	{
-		const hot = new Hot();
-		hot.style("DIV", { borderRadius: "20px" });
+		const raw = new Raw();
+		raw.style("DIV", { borderRadius: "20px" });
 		
-		hot.get(document.body)(
-			hot.div(
+		raw.get(document.body)(
+			raw.div(
 				"shadow-container",
 				{
 					border: "10px solid red",
 					padding: "10px",
 				},
-				hot.shadow(
-					hot.style(
+				raw.shadow(
+					raw.style(
 						"DIV",
 						{
 							backgroundColor: "yellow"
 						},
 					),
-					hot.div(
+					raw.div(
 						"shadow-element-1",
 						{
 							width: "100px",
@@ -74,8 +74,8 @@ namespace Cover
 						}
 					)
 				),
-				hot.shadow(
-					hot.div(
+				raw.shadow(
+					raw.div(
 						"shadow-element-2",
 						{
 							width: "100px",
@@ -89,17 +89,17 @@ namespace Cover
 	}
 	
 	/** */
-	export function coverHotCssDeduplication()
+	export function coverRawCssDeduplication()
 	{
-		const hot = new Hot();
+		const raw = new Raw();
 		
 		const insert = () =>
 		{
 			document.body.append(
-				hot.div(
-					hot.css(" P", { color: "red" }),
-					hot.p(hot.text`para1`),
-					hot.p(hot.text`para2`),
+				raw.div(
+					raw.css(" P", { color: "red" }),
+					raw.p(raw.text`para1`),
+					raw.p(raw.text`para2`),
 				)
 			);
 		};
@@ -109,10 +109,10 @@ namespace Cover
 	}
 	
 	/** */
-	export function coverHotArrayValues()
+	export function coverRawArrayValues()
 	{
-		const hot = new Hot();
-		const div = hot.div(
+		const raw = new Raw();
+		const div = raw.div(
 			{
 				width: ["error", "100%"]
 			}

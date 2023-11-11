@@ -278,14 +278,15 @@ class Hot extends (() => Object as any as HotElements)()
 				break; case String:
 				{
 					// Note that ShadowRoots cannot accept string parameters.
-					const cssClass = param as string;
-					(e as Element).classList.add(cssClass);
+					const cls = param as string;
+					const classes = cls.split(/\s+/g);
+					(e as Element).classList.add(...classes);
 					
-					if (cssClass.indexOf(Hot.GeneratedClassPrefix.value) === 0)
+					if (cls.indexOf(Hot.GeneratedClassPrefix.value) === 0)
 					{
 						const maybeShadow = e.getRootNode();
 						if (Hot.is.shadow(maybeShadow))
-							this.toShadow(maybeShadow, cssClass);
+							this.toShadow(maybeShadow, cls);
 					}
 				}
 				break; case Object:

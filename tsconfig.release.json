@@ -1,10 +1,10 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"outFile": "+build/hot.js",
+		"outFile": "+build/hot.js"
 	},
 	"exclude": [
 		"**/+build/**/*.ts",
-		"**/*.cover.ts",
-	],
+		"**/*.cover.ts"
+	]
 }

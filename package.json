@@ -1,7 +1,7 @@
 {
 	"name": "rawjs",
 	"author": "Paul Gordon",
-	"description": "Peacefully simple view layer. Because React is still too complicated.",
+	"description": "A simple, bare-metal HTML UI construction library. Because frameworks are obstacles.",
 	"version": "1.0.9",
 	"license": "MIT",
 	"repository": {

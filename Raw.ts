@@ -43,7 +43,7 @@ interface RawElements
 	figure(...params: Raw.Param[]): HTMLElement;
 	font(...params: Raw.Param[]): HTMLFontElement;
 	footer(...params: Raw.Param[]): HTMLElement;
-	form(...params: Raw.Param[]): HTMLFormElement;
+	form(...params: Raw.Param<Raw.FormElementAttribute>[]): HTMLFormElement;
 	frame(...params: Raw.Param[]): HTMLFrameElement;
 	frameset(...params: Raw.Param[]): HTMLFrameSetElement;
 	h1(...params: Raw.Param[]): HTMLHeadingElement;
@@ -869,7 +869,7 @@ declare namespace Raw
 	
 	/** */
 	export type Param<T = ElementAttribute> =
-		// Single class name
+		// Class name list
 		string |
 		// Event connections
 		Raw.Event |
@@ -914,6 +914,18 @@ declare namespace Raw
 	export interface BaseElementAttribute extends ElementAttribute
 	{
 		href: string;
+	}
+	
+	/** */
+	export interface FormElementAttribute extends ElementAttribute
+	{
+		autocomplete: string;
+		rel: string;
+		action: string;
+		enctype: string;
+		method: string;
+		noValidate: boolean;
+		target: string;
 	}
 	
 	/** */

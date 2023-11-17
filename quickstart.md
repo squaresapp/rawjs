@@ -47,11 +47,11 @@ Read this to learn how it knows if you mean an attribute or a style. (TL;DR: It'
 
 ## Text Content
 
-Add text content with the ``raw`...`` template literal.
+Add text content with the ``raw.text`...`` template literal.
 
 ```typescript
 document.body.append(
-	raw.p(raw`Hello!`)
+	raw.p(raw.text`Hello!`)
 );
 ```
 Makes:
@@ -59,10 +59,21 @@ Makes:
 <p>Hello!</p>
 ```
 
-The ``raw`...`` template literal just returns a DOM `Text` node. So technically this is equivalent:
+The ``raw.text`...`` template literal just returns a DOM `Text` node. So technically this is equivalent:
 ```typescript
 document.body.append(
 	raw.p(new Text("Hello!"))
+);
+```
+
+Some people may find it useful to globalize a function called `t` so that the `raw.text()` function can be shortened. For example:
+
+```typescript
+// Globalize this const, which is different depending on whether or not you're using ES modules.
+const t = raw.text;
+
+document.body.append(
+	raw.p("css-class-name", t`This is text content.`)
 );
 ```
 

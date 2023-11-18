@@ -26,28 +26,19 @@ Frameworks tend to do a lot of reinventing of what you can already do in JavaScr
 
 Also:
 
-- RawJS is being used in production (to build the Direct app).
+- RawJS is being used in production.
 - Many years in the making. Has passed through many different design variations.
 - Works as a `<script>` include, as a module, or as a `require()`.
 - Works in Node.js / Deno for server-side HTML generation.
 
-## Reasons Not Use RawJS?
-
-- **React / Vue / Svelte have stronger ecosystems**. But for a battle-tested 2.3KB library that's not doing very much, how important really is an ecosystem?
-- No mobile-native UI (React Native) equivalent. If someone wants to make a RawJS backend for NativeScript, DM me on Twitter.
-
 ## Installation
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/rawjs/raw.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@scrollapp/rawjs@1.0.10/raw.min.js"></script>
 ```
 Or
 ```
 npm install @scrollapp/rawjs --save
-```
-Or
-```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/rawjs/raw.esm.js"></script>
 ```
 
 ## Usage

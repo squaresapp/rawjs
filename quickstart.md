@@ -256,7 +256,7 @@ You can capture existing elements with the `raw.get(...)` function. You can thin
 Here is an example of capturing an existing element, and attaching a class name and an event listener.
 
 ```typescript
-raw.get(someExistingElement)(
+raw.get(document.body)(
 	"add-this-class",
 	raw.on("click", () =>
 	{

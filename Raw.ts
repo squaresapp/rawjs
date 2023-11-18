@@ -1313,7 +1313,14 @@ interface CSSStyleDeclaration
 }
 
 //@ts-ignore
-if (typeof module === "object") Object.assign(module.exports, { Raw: Raw });
+if (typeof module === "object") Object.assign(module.exports, { Raw });
 
-// ES Module compatibility
-declare module "rawjs" { export = Raw; }
+/** 
+ * @internal
+ * ES Module export generator function
+ */
+function __export()
+{
+	const raw = new Raw();
+	return { raw, t: raw.text, Raw };
+}

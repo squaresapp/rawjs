@@ -1,7 +1,7 @@
 {
 	"name": "@scrollapp/rawjs",
 	"author": "Paul Gordon",
-	"description": "A simple, bare-metal HTML UI construction library. Because frameworks are obstacles.",
+	"description": "Better document.createElement(). So much better, that you may no longer need React / Vue / Svelte.",
 	"version": "1.0.9",
 	"license": "MIT",
 	"repository": {

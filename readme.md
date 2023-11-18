@@ -43,7 +43,7 @@ Also:
 ```
 Or
 ```
-npm install rawjs --save
+npm install @scrollapp/rawjs --save
 ```
 Or
 ```html

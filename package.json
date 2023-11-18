@@ -1,5 +1,5 @@
 {
-	"name": "rawjs",
+	"name": "@scrollapp/rawjs",
 	"author": "Paul Gordon",
 	"description": "A simple, bare-metal HTML UI construction library. Because frameworks are obstacles.",
 	"version": "1.0.9",
@@ -15,6 +15,9 @@
 	"browser": "raw.js",
 	"module": "raw.esm.js",
 	"types": "raw.d.ts",
+	"publishConfig": {
+		"access": "public"
+	},
 	"files": [
 		"LICENSE.txt",
 		"readme.md",

@@ -45,7 +45,7 @@ npm install @scrollapp/rawjs --save
 
 For ES Modules usage:
 ```typescript
-import * as raw from "rawjs";
+import { raw } from "@scrollapp/rawjs";
 
 document.body.append(
 	raw.div(
@@ -60,8 +60,6 @@ document.body.append(
 
 For global usage:
 ```typescript
-const raw = new Raw();
-
 document.body.append(
 	raw.div(
 		{

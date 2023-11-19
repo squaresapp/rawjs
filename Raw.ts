@@ -1312,15 +1312,17 @@ interface CSSStyleDeclaration
 	msOverflowStyle: string;
 }
 
-//@ts-ignore
-if (typeof module === "object") Object.assign(module.exports, { Raw });
+const raw = new Raw();
 
-/** 
- * @internal
- * ES Module export generator function
- */
-function __export()
+//@ts-ignore CommonJS compatibility
+if (typeof module === "object") Object.assign(module.exports, { raw, Raw});
+
+// ES module compatibility
+declare module "@scrollapp/rawjs"
 {
-	const raw = new Raw();
-	return { raw, t: raw.text, Raw };
+	const __export: { raw: Raw, Raw: typeof Raw };
+	export = __export;
 }
+
+// The comment and + prefix is removed during npm run bundle
+//+ export { raw, Raw }

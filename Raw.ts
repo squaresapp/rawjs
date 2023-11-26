@@ -122,6 +122,133 @@ interface RawElements
 	new(): RawElements;
 }
 
+/**
+ * JSX compatibility
+ */
+declare namespace JSX
+{
+	type Element = globalThis.Element;
+	type E<T> = Partial<T | Raw.Style>;
+	
+	interface IntrinsicElements
+	{
+		a: E<Raw.AnchorElementAttribute>;
+		abbr: E<Raw.ElementAttribute>;
+		address: E<Raw.ElementAttribute>;
+		area: E<Raw.ElementAttribute>;
+		article: E<Raw.ElementAttribute>;
+		aside: E<Raw.ElementAttribute>;
+		audio: E<Raw.ElementAttribute>;
+		b: E<Raw.ElementAttribute>;
+		base: E<Raw.BaseElementAttribute>;
+		bdi: E<Raw.ElementAttribute>;
+		bdo: E<Raw.ElementAttribute>;
+		blockquote: E<Raw.ElementAttribute>;
+		body: E<Raw.ElementAttribute>;
+		br: E<Raw.ElementAttribute>;
+		button: E<Raw.ElementAttribute>;
+		canvas: E<Raw.ElementAttribute>;
+		caption: E<Raw.ElementAttribute>;
+		cite: E<Raw.ElementAttribute>;
+		code: E<Raw.ElementAttribute>;
+		col: E<Raw.ElementAttribute>;
+		colgroup: E<Raw.ElementAttribute>;
+		data: E<Raw.ElementAttribute>;
+		datalist: E<Raw.ElementAttribute>;
+		dd: E<Raw.ElementAttribute>;
+		del: E<Raw.ElementAttribute>;
+		details: E<Raw.ElementAttribute>;
+		dfn: E<Raw.ElementAttribute>;
+		dialog: E<Raw.ElementAttribute>;
+		dir: E<Raw.ElementAttribute>;
+		div: E<Raw.ElementAttribute>;
+		dl: E<Raw.ElementAttribute>;
+		dt: E<Raw.ElementAttribute>;
+		em: E<Raw.ElementAttribute>;
+		embed: E<Raw.ElementAttribute>;
+		fieldset: E<Raw.ElementAttribute>;
+		figcaption: E<Raw.ElementAttribute>;
+		figure: E<Raw.ElementAttribute>;
+		font: E<Raw.ElementAttribute>;
+		footer: E<Raw.ElementAttribute>;
+		form: E<Raw.FormElementAttribute>;
+		frame: E<Raw.ElementAttribute>;
+		frameset: E<Raw.ElementAttribute>;
+		h1: E<Raw.ElementAttribute>;
+		h2: E<Raw.ElementAttribute>;
+		h3: E<Raw.ElementAttribute>;
+		h4: E<Raw.ElementAttribute>;
+		h5: E<Raw.ElementAttribute>;
+		h6: E<Raw.ElementAttribute>;
+		head: E<Raw.ElementAttribute>;
+		header: E<Raw.ElementAttribute>;
+		hgroup: E<Raw.ElementAttribute>;
+		hr: E<Raw.ElementAttribute>;
+		i: E<Raw.ElementAttribute>;
+		iframe: E<Raw.FrameElementAttribute>;
+		img: E<Raw.ImageElementAttribute>;
+		input: E<Raw.InputElementAttribute>;
+		ins: E<Raw.ElementAttribute>;
+		kbd: E<Raw.ElementAttribute>;
+		label: E<Raw.ElementAttribute>;
+		legend: E<Raw.ElementAttribute>;
+		li: E<Raw.ElementAttribute>;
+		link: E<Raw.LinkElementAttribute>;
+		main: E<Raw.ElementAttribute>;
+		map: E<Raw.ElementAttribute>;
+		mark: E<Raw.ElementAttribute>;
+		marquee: E<Raw.ElementAttribute>;
+		menu: E<Raw.ElementAttribute>;
+		meta: E<Raw.MetaElementAttribute>;
+		meter: E<Raw.ElementAttribute>;
+		nav: E<Raw.ElementAttribute>;
+		noscript: E<Raw.ElementAttribute>;
+		object: E<Raw.ElementAttribute>;
+		ol: E<Raw.ElementAttribute>;
+		optgroup: E<Raw.ElementAttribute>;
+		option: E<Raw.ElementAttribute>;
+		output: E<Raw.ElementAttribute>;
+		p: E<Raw.ElementAttribute>;
+		param: E<Raw.ElementAttribute>;
+		picture: E<Raw.ElementAttribute>;
+		pre: E<Raw.ElementAttribute>;
+		progress: E<Raw.ElementAttribute>;
+		q: E<Raw.ElementAttribute>;
+		rp: E<Raw.ElementAttribute>;
+		rt: E<Raw.ElementAttribute>;
+		ruby: E<Raw.ElementAttribute>;
+		s: E<Raw.ElementAttribute>;
+		samp: E<Raw.ElementAttribute>;
+		script: E<Raw.ScriptElementAttribute>;
+		section: E<Raw.ElementAttribute>;
+		select: E<Raw.ElementAttribute>;
+		slot: E<Raw.ElementAttribute>;
+		small: E<Raw.ElementAttribute>;
+		source: E<Raw.ElementAttribute>;
+		span: E<Raw.ElementAttribute>;
+		strong: E<Raw.ElementAttribute>;
+		sub: E<Raw.ElementAttribute>;
+		summary: E<Raw.ElementAttribute>;
+		sup: E<Raw.ElementAttribute>;
+		table: E<Raw.ElementAttribute>;
+		tbody: E<Raw.ElementAttribute>;
+		td: E<Raw.ElementAttribute>;
+		template: E<Raw.ElementAttribute>;
+		textarea: E<Raw.ElementAttribute>;
+		tfoot: E<Raw.ElementAttribute>;
+		th: E<Raw.ElementAttribute>;
+		thead: E<Raw.ElementAttribute>;
+		time: E<Raw.ElementAttribute>;
+		title: E<Raw.ElementAttribute>;
+		tr: E<Raw.ElementAttribute>;
+		track: E<Raw.ElementAttribute>;
+		u: E<Raw.ElementAttribute>;
+		ul: E<Raw.ElementAttribute>;
+		video: E<Raw.VideoElementAttribute>;
+		wbr: E<Raw.ElementAttribute>;
+	}
+}
+
 class Raw extends (() => Object as any as RawElements)()
 {
 	/** */
@@ -224,6 +351,17 @@ class Raw extends (() => Object as any as RawElements)()
 			const shadow = e.shadowRoot || e.attachShadow({ mode: "open" });
 			this.apply(shadow, params as Raw.Param[]);
 		};
+	}
+	
+	/**
+	 * Creates a DOM element using the standard JSX element creation call signature. 
+	 * Any Raw.Param values that are strings are converted to DOM Text nodes rather
+	 * than class names.
+	 */
+	jsx(tag: string, ...params: Raw.Param[])
+	{
+		params = params.filter(p => p).map(p => typeof p === "string" ? new Text(p) : p);
+		return this.apply(document.createElement(tag), params) as Element;
 	}
 	
 	/** */

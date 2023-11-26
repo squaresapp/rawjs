@@ -122,6 +122,18 @@ namespace Cover
 		return () => div.style.width === "100%";
 	}
 	
+	/** */
+	export function coverRawJSXCompatibility()
+	{
+		const raw = new Raw();
+		
+		document.body.append(
+			raw.div(
+				<a href="#">This is <b>bold</b> text.</a>
+			)
+		);
+	}
+	
 	//@ts-ignore
 	if (typeof module === "object") Object.assign(module.exports, { Cover });
 }

@@ -4,7 +4,7 @@
 		"outFile": "+build/raw.js"
 	},
 	"exclude": [
-		"**/+build/**/*.ts",
+		"**/+*/**/*.ts",
 		"**/*.cover.ts"
 	]
 }

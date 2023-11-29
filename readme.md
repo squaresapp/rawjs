@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="readme-poster.png" alt="RawJS Poster Image">
+	<img src="readme-poster.png" alt="RawJS Poster Image" width="300">
 </p>
 
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Is%20React%20too%20complicated%3F%20Give%20Raw.js%20a%20go.&url=https://github.com/scrollapp/rawjs)

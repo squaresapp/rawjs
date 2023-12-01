@@ -128,159 +128,166 @@ interface RawElements
 declare namespace JSX
 {
 	type Element = globalThis.Element;
-	type E<T> = Partial<T | Raw.Style>;
+	type E<T = Raw.ElementAttribute> = Partial<T | Raw.Style>;
 	
 	interface IntrinsicElements
 	{
 		a: E<Raw.AnchorElementAttribute>;
-		abbr: E<Raw.ElementAttribute>;
-		address: E<Raw.ElementAttribute>;
-		area: E<Raw.ElementAttribute>;
-		article: E<Raw.ElementAttribute>;
-		aside: E<Raw.ElementAttribute>;
-		audio: E<Raw.ElementAttribute>;
-		b: E<Raw.ElementAttribute>;
+		abbr: E;
+		address: E;
+		area: E;
+		article: E;
+		aside: E;
+		audio: E;
+		b: E;
 		base: E<Raw.BaseElementAttribute>;
-		bdi: E<Raw.ElementAttribute>;
-		bdo: E<Raw.ElementAttribute>;
-		blockquote: E<Raw.ElementAttribute>;
-		body: E<Raw.ElementAttribute>;
-		br: E<Raw.ElementAttribute>;
-		button: E<Raw.ElementAttribute>;
-		canvas: E<Raw.ElementAttribute>;
-		caption: E<Raw.ElementAttribute>;
-		cite: E<Raw.ElementAttribute>;
-		code: E<Raw.ElementAttribute>;
-		col: E<Raw.ElementAttribute>;
-		colgroup: E<Raw.ElementAttribute>;
-		data: E<Raw.ElementAttribute>;
-		datalist: E<Raw.ElementAttribute>;
-		dd: E<Raw.ElementAttribute>;
-		del: E<Raw.ElementAttribute>;
-		details: E<Raw.ElementAttribute>;
-		dfn: E<Raw.ElementAttribute>;
-		dialog: E<Raw.ElementAttribute>;
-		dir: E<Raw.ElementAttribute>;
-		div: E<Raw.ElementAttribute>;
-		dl: E<Raw.ElementAttribute>;
-		dt: E<Raw.ElementAttribute>;
-		em: E<Raw.ElementAttribute>;
-		embed: E<Raw.ElementAttribute>;
-		fieldset: E<Raw.ElementAttribute>;
-		figcaption: E<Raw.ElementAttribute>;
-		figure: E<Raw.ElementAttribute>;
-		font: E<Raw.ElementAttribute>;
-		footer: E<Raw.ElementAttribute>;
+		bdi: E;
+		bdo: E;
+		blockquote: E;
+		body: E;
+		br: E;
+		button: E;
+		canvas: E;
+		caption: E;
+		cite: E;
+		code: E;
+		col: E;
+		colgroup: E;
+		data: E;
+		datalist: E;
+		dd: E;
+		del: E;
+		details: E;
+		dfn: E;
+		dialog: E;
+		dir: E;
+		div: E;
+		dl: E;
+		dt: E;
+		em: E;
+		embed: E;
+		fieldset: E;
+		figcaption: E;
+		figure: E;
+		font: E;
+		footer: E;
 		form: E<Raw.FormElementAttribute>;
-		frame: E<Raw.ElementAttribute>;
-		frameset: E<Raw.ElementAttribute>;
-		h1: E<Raw.ElementAttribute>;
-		h2: E<Raw.ElementAttribute>;
-		h3: E<Raw.ElementAttribute>;
-		h4: E<Raw.ElementAttribute>;
-		h5: E<Raw.ElementAttribute>;
-		h6: E<Raw.ElementAttribute>;
-		head: E<Raw.ElementAttribute>;
-		header: E<Raw.ElementAttribute>;
-		hgroup: E<Raw.ElementAttribute>;
-		hr: E<Raw.ElementAttribute>;
-		i: E<Raw.ElementAttribute>;
+		frame: E;
+		frameset: E;
+		h1: E;
+		h2: E;
+		h3: E;
+		h4: E;
+		h5: E;
+		h6: E;
+		head: E;
+		header: E;
+		hgroup: E;
+		hr: E;
+		i: E;
 		iframe: E<Raw.FrameElementAttribute>;
 		img: E<Raw.ImageElementAttribute>;
 		input: E<Raw.InputElementAttribute>;
-		ins: E<Raw.ElementAttribute>;
-		kbd: E<Raw.ElementAttribute>;
-		label: E<Raw.ElementAttribute>;
-		legend: E<Raw.ElementAttribute>;
-		li: E<Raw.ElementAttribute>;
+		ins: E;
+		kbd: E;
+		label: E;
+		legend: E;
+		li: E;
 		link: E<Raw.LinkElementAttribute>;
-		main: E<Raw.ElementAttribute>;
-		map: E<Raw.ElementAttribute>;
-		mark: E<Raw.ElementAttribute>;
-		marquee: E<Raw.ElementAttribute>;
-		menu: E<Raw.ElementAttribute>;
+		main: E;
+		map: E;
+		mark: E;
+		marquee: E;
+		menu: E;
 		meta: E<Raw.MetaElementAttribute>;
-		meter: E<Raw.ElementAttribute>;
-		nav: E<Raw.ElementAttribute>;
-		noscript: E<Raw.ElementAttribute>;
-		object: E<Raw.ElementAttribute>;
-		ol: E<Raw.ElementAttribute>;
-		optgroup: E<Raw.ElementAttribute>;
-		option: E<Raw.ElementAttribute>;
-		output: E<Raw.ElementAttribute>;
-		p: E<Raw.ElementAttribute>;
-		param: E<Raw.ElementAttribute>;
-		picture: E<Raw.ElementAttribute>;
-		pre: E<Raw.ElementAttribute>;
-		progress: E<Raw.ElementAttribute>;
-		q: E<Raw.ElementAttribute>;
-		rp: E<Raw.ElementAttribute>;
-		rt: E<Raw.ElementAttribute>;
-		ruby: E<Raw.ElementAttribute>;
-		s: E<Raw.ElementAttribute>;
-		samp: E<Raw.ElementAttribute>;
+		meter: E;
+		nav: E;
+		noscript: E;
+		object: E;
+		ol: E;
+		optgroup: E;
+		option: E;
+		output: E;
+		p: E;
+		param: E;
+		picture: E;
+		pre: E;
+		progress: E;
+		q: E;
+		rp: E;
+		rt: E;
+		ruby: E;
+		s: E;
+		samp: E;
 		script: E<Raw.ScriptElementAttribute>;
-		section: E<Raw.ElementAttribute>;
-		select: E<Raw.ElementAttribute>;
-		slot: E<Raw.ElementAttribute>;
-		small: E<Raw.ElementAttribute>;
-		source: E<Raw.ElementAttribute>;
-		span: E<Raw.ElementAttribute>;
-		strong: E<Raw.ElementAttribute>;
-		sub: E<Raw.ElementAttribute>;
-		summary: E<Raw.ElementAttribute>;
-		sup: E<Raw.ElementAttribute>;
-		table: E<Raw.ElementAttribute>;
-		tbody: E<Raw.ElementAttribute>;
-		td: E<Raw.ElementAttribute>;
-		template: E<Raw.ElementAttribute>;
-		textarea: E<Raw.ElementAttribute>;
-		tfoot: E<Raw.ElementAttribute>;
-		th: E<Raw.ElementAttribute>;
-		thead: E<Raw.ElementAttribute>;
-		time: E<Raw.ElementAttribute>;
-		title: E<Raw.ElementAttribute>;
-		tr: E<Raw.ElementAttribute>;
-		track: E<Raw.ElementAttribute>;
-		u: E<Raw.ElementAttribute>;
-		ul: E<Raw.ElementAttribute>;
+		section: E;
+		select: E;
+		slot: E;
+		small: E;
+		source: E;
+		span: E;
+		strong: E;
+		sub: E;
+		summary: E;
+		sup: E;
+		table: E;
+		tbody: E;
+		td: E;
+		template: E;
+		textarea: E;
+		tfoot: E;
+		th: E;
+		thead: E;
+		time: E;
+		title: E;
+		tr: E;
+		track: E;
+		u: E;
+		ul: E;
 		video: E<Raw.VideoElementAttribute>;
-		wbr: E<Raw.ElementAttribute>;
+		wbr: E;
 	}
 }
 
 class Raw extends (() => Object as any as RawElements)()
 {
 	/** */
-	static readonly elements = ["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "slot", "small", "source", "span", "strong", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "video", "wbr",
-	];
+	static readonly elements: ReadonlySet<string> = new Set<string>(["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "slot", "small", "source", "span", "strong", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "video", "wbr"]);
+	
+	/** */
+	static readonly HTMLCustomElement =
+		(typeof HTMLElement !== "undefined") as true &&
+		class HTMLCustomElement extends HTMLElement { };
 	
 	/**
+	 * Creates a new instance of a Raw element creator.
 	 * 
+	 * @param doc A reference to the Document object over
+	 * which this Raw instance operates. 
 	 */
-	constructor(private readonly provider: Raw.INodeProvider = {})
+	constructor(private readonly doc: Document)
 	{
 		super();
 		
-		for (const name of Raw.elements)
+		for (const tagName of Raw.elements)
+			this.define(tagName);
+	}
+	
+	/**
+	 * Defines a custom element which derives from the specified constructor.
+	 */
+	define(tagName: string, constructor: typeof HTMLElement = Raw.HTMLCustomElement)
+	{
+		if (!Raw.elements.has(tagName))
 		{
-			Object.defineProperty(this, name, {
-				value: (...params: Raw.Param[]) =>
-				{
-					const element = 
-						provider.createElement?.(name) ||
-						document.createElement(name);
-					
-					return this.apply(element as HTMLElement, params);
-				}
-			});
+			tagName += "-element";
+			if (typeof customElements !== "undefined")
+				customElements.define(tagName, constructor);
 		}
 		
-		if (this.provider.createText)
-		{
-			const fn = this.provider.createText;
-			this.text = (...strings: any[]) => fn(strings.join("")) as Text;
-		}
+		Object.defineProperty(this, tagName, {
+			value: (...params: Raw.Param[]) => this.apply(this.doc.createElement(tagName), params)
+		});
 	}
 	
 	/**
@@ -291,7 +298,7 @@ class Raw extends (() => Object as any as RawElements)()
 	text(...strings: string[]): Text
 	text(...strings: any[])
 	{
-		return new Text(strings.join(""));
+		return this.doc.createTextNode(strings.join(""));
 	}
 	
 	/**
@@ -316,8 +323,11 @@ class Raw extends (() => Object as any as RawElements)()
 		};
 	}
 	
-	/** */
-	static readonly is = Object.freeze({
+	/**
+	 * An object that contains environment-agnostic guard functions
+	 * to make various assertions about data.
+	 */
+	static readonly is = {
 		node(n: any): n is Node
 		{
 			const type = n?.nodeType;
@@ -339,7 +349,26 @@ class Raw extends (() => Object as any as RawElements)()
 		{
 			return !!c && (c as ShadowRoot).nodeType === 11 && Raw.is.element(c.host);
 		},
-	});
+		/**
+		 * Returns a boolean value that indicates whether the specified
+		 * string is the name of a valid CSS property in camelCase format,
+		 * for example, "fontWeight".
+		 */
+		property(name: string)
+		{
+			const propertyNames: string[] = [];
+			
+			if (typeof document !== "undefined")
+				for (const key in document.documentElement.style)
+					propertyNames.push(key);
+			
+			// This is a performance micro-optimization, so that future calls to
+			// is.property() are forwarded directly to this embedded map.
+			const cssPropertySet = new Set(propertyNames);
+			Raw.is.property = cssPropertySet.has.bind(cssPropertySet);
+			return cssPropertySet.has(name);
+		}
+	};
 	
 	/**
 	 * 
@@ -361,26 +390,21 @@ class Raw extends (() => Object as any as RawElements)()
 	jsx(tag: string, ...params: Raw.Param[])
 	{
 		params = params.filter(p => p).map(p => typeof p === "string" ? new Text(p) : p);
-		return this.apply(document.createElement(tag), params) as Element;
+		return this.apply(this.doc.createElement(tag), params) as Element;
 	}
 	
-	/** */
+	/**
+	 * This is the main applicator method where all params are applied 
+	 * to the target.
+	 * 
+	 * PROCEED WITH CAUTION. This code is VERY performance sensitive.
+	 * It uses constructor checks instead of instanceof and typeof in an effort
+	 * to nullify any performance overhead. Be careful of changing this code
+	 * without having full knowledge of what you're doing. Chesterton's
+	 * fence rule applies here.
+	 */
 	private apply(e: Element | ShadowRoot, params: Raw.Param[])
 	{
-		if (this.cssPropertySet === null)
-		{
-			const propertyNames: string[] = [];
-			
-			for (const key in document.documentElement.style)
-				propertyNames.push(key);
-			
-			this.cssPropertySet = new Set(propertyNames);
-		}
-		
-		// CAUTION: This code is *very* performance sensitive. It uses
-		// constructor checks instead of instanceof and typeof in an effort
-		// to squeeze out maximum performance. Be careful of changing
-		// this code without  having full knowledge of what you're doing.
 		for (let i = -1, length = params.length; ++i < length;)
 		{
 			const param = params[i];
@@ -461,7 +485,7 @@ class Raw extends (() => Object as any as RawElements)()
 							el[name] = value;
 							(e as Element).setAttribute(name, value);
 						}
-						else if (this.cssPropertySet.has(name))
+						else if (Raw.is.property(name))
 						{
 							this.setProperty(el, name, value);
 						}
@@ -497,8 +521,6 @@ class Raw extends (() => Object as any as RawElements)()
 		
 		return e;
 	}
-	
-	private cssPropertySet: Set<string> | null = null;
 	
 	//# Event Related
 	
@@ -572,7 +594,7 @@ class Raw extends (() => Object as any as RawElements)()
 	/** */
 	private maybeInstallRootObserver()
 	{
-		if (this.hasInstalledRootObserver)
+		if (this.hasInstalledRootObserver || typeof MutationObserver === "undefined")
 			return;
 		
 		this.hasInstalledRootObserver = true;
@@ -608,7 +630,7 @@ class Raw extends (() => Object as any as RawElements)()
 					element.dispatchEvent(event);
 			}
 			
-		}).observe(document.body, { childList: true, subtree: true });
+		}).observe(this.doc.body, { childList: true, subtree: true });
 	}
 	
 	private hasInstalledRootObserver = false;
@@ -636,13 +658,11 @@ class Raw extends (() => Object as any as RawElements)()
 	style(...rawCss: Text[]): Raw.HTMLRawStyleElement;
 	style(...args: any[])
 	{
-		const element = 
-			(this.provider.createElement?.("style") as Raw.HTMLRawStyleElement) ||
-			document.createElement("style");
+		const element = this.doc.createElement("style") as Raw.HTMLRawStyleElement;
 		
-		element.attach = function(n?: Node)
+		element.attach = (n?: Node) =>
 		{
-			const root = n ? n.getRootNode() : document;
+			const root = n ? n.getRootNode() : this.doc;
 			const container = root instanceof Document ? root.head : root;
 			container.appendChild(element);
 			return element;
@@ -870,7 +890,7 @@ class Raw extends (() => Object as any as RawElements)()
 		if (existing instanceof HTMLStyleElement)
 			return existing;
 		
-		const styleElement = document.createElement("style");
+		const styleElement = this.doc.createElement("style") as HTMLStyleElement;
 		styleElement.className = cls;
 		container.append(styleElement);
 		return styleElement;
@@ -897,30 +917,6 @@ class Raw extends (() => Object as any as RawElements)()
 		h2 = Math.imul(h2 ^ h2 >>> 16, 2246822507) ^ Math.imul(h1 ^ h1 >>> 13, 3266489909);
 		return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 	}
-}
-
-declare namespace Raw
-{
-	/**
-	 * A class that can be passed to the Raw constructor in order to
-	 * provide a way to override the functions that are called to construct
-	 * DOM objects. 
-	 */
-	export interface INodeProvider
-	{
-		createElement?: (tagName: string) => IHTMLElementLike;
-		createGlobalStyleSheet?: () => CSSStyleSheet;
-		createText?: (textContent: string) => INodeLike;
-	}
-	
-	/** */
-	export type ElementClosure = ((e: HTMLElement) => Param | Param[]);
-	
-	/** */
-	export type ShadowClosure = ((e: ShadowRoot) => Param | Param[]);
-	
-	/** */
-	export type HatLike = { readonly head: HTMLElement; };
 }
 
 //# Element Related
@@ -1004,6 +1000,15 @@ declare namespace Raw
 			setProperty(name: string, value: string, important?: string): void;
 		}
 	}
+	
+	/** */
+	export type ElementClosure = ((e: HTMLElement) => Param | Param[]);
+	
+	/** */
+	export type ShadowClosure = ((e: ShadowRoot) => Param | Param[]);
+	
+	/** */
+	export type HatLike = { readonly head: HTMLElement; };
 	
 	/** */
 	export type Param<T = ElementAttribute> =
@@ -1092,7 +1097,13 @@ declare namespace Raw
 	/** */
 	export interface FrameElementAttribute extends ElementAttribute
 	{
+		allow: string;
+		allowfullscreen: string;
+		loading: string;
+		referrerpolicy: string;
 		src: string;
+		srcdoc: string;
+		sandbox: string;
 	}
 	
 	/** */
@@ -1315,6 +1326,10 @@ declare namespace Raw
 		top: string | 0;
 		transitionDelay: string | 0;
 		transitionDuration: string | 0;
+		webkitMarginAfter: string | 0;
+		webkitMarginBefore: string | 0;
+		webkitMarginEnd: string | 0;
+		webkitMarginStart: string | 0;
 		width: string | number;
 		wordSpacing: string | 0;
 		zIndex: string | number;
@@ -1408,10 +1423,6 @@ interface CSSStyleDeclaration
 	webkitLocale: string;
 	webkitLogicalHeight: string;
 	webkitLogicalWidth: string;
-	webkitMarginAfter: string | 0;
-	webkitMarginBefore: string | 0;
-	webkitMarginEnd: string | 0;
-	webkitMarginStart: string | 0;
 	webkitMaskComposite: string;
 	webkitMaxLogicalHeight: string;
 	webkitMaxLogicalWidth: string;
@@ -1450,7 +1461,7 @@ interface CSSStyleDeclaration
 	msOverflowStyle: string;
 }
 
-const raw = new Raw();
+const raw = new Raw((typeof document !== "undefined") as true ? document : {} as Document);
 
 //@ts-ignore CommonJS compatibility
 if (typeof module === "object") Object.assign(module.exports, { raw, Raw});

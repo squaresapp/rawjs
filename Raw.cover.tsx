@@ -1,25 +1,29 @@
 
+declare namespace JSX
+{
+	interface IntrinsicElements
+	{
+		red: E;
+	}
+}
+
 namespace Cover
 {
 	/** */
-	export function coverRaw()
+	export function coverCustomElement()
 	{
-		const raw = new Raw({
-			createElement(tagName)
-			{
-				return document.createElement(tagName);
-			},
-			createGlobalStyleSheet()
-			{
-				return {} as CSSStyleSheet;
-			}
-		});
+		document.body.append(
+			<red></red>
+		);
 	}
 	
 	/** */
 	export function coverRawConnectedEvent()
 	{
-		const raw = new Raw();
+		raw.div(
+			<red>
+			</red>
+		);
 		
 		raw.get(document.body)(
 			raw.section(
@@ -34,8 +38,6 @@ namespace Cover
 	/** */
 	export function coverRawStyleAttach()
 	{
-		const raw = new Raw();
-		
 		raw.style("DIV", {
 			width: "100px",
 			height: "100px",
@@ -48,7 +50,6 @@ namespace Cover
 	/** */
 	export function coverRawShadow()
 	{
-		const raw = new Raw();
 		raw.style("DIV", { borderRadius: "20px" });
 		
 		raw.get(document.body)(
@@ -91,8 +92,6 @@ namespace Cover
 	/** */
 	export function coverRawCssDeduplication()
 	{
-		const raw = new Raw();
-		
 		const insert = () =>
 		{
 			document.body.append(
@@ -111,7 +110,6 @@ namespace Cover
 	/** */
 	export function coverRawArrayValues()
 	{
-		const raw = new Raw();
 		const div = raw.div(
 			{
 				width: ["error", "100%"]
@@ -125,8 +123,6 @@ namespace Cover
 	/** */
 	export function coverRawJSXCompatibility()
 	{
-		const raw = new Raw();
-		
 		document.body.append(
 			raw.div(
 				<a href="#">This is <b>bold</b> text.</a>

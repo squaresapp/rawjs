@@ -32,6 +32,6 @@
 		"test": "exit 0",
 		"esm": "sed 's/\\/\\/+ //' ./+build/raw.js > ./+build/raw.esm.js",
 		"bundle": "tsc -p tsconfig.release.json && terser ./+build/raw.debug.js > ./+build/raw.min.js && npm run esm",
-		"release": "npm run bundle && cd ./+build && cp ../package.json ./package.json && np"
+		"release": "npm run bundle && cd ./+build && cp ../package.json ./package.json && np && cp ./package.json ../package.json"
 	}
 }

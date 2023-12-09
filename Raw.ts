@@ -251,8 +251,26 @@ declare namespace JSX
 
 class Raw extends (() => Object as any as RawElements)()
 {
-	/** */
+	/**
+	 * Stores the immutable set of HTML elements that
+	 * are recognized as HTML element creation functions.
+	 */
 	static readonly elements: ReadonlySet<string> = new Set<string>(["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "slot", "small", "source", "span", "strong", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "video", "wbr"]);
+	
+	/** 
+	 * Stores the list of strings that are recognized as CSS properties by RawJS,
+	 * (as opposed to being recognized as HTML attributes). Users may contribute
+	 * strings to this set in order to add support for custom CSS properties.
+	 */
+	static readonly properties = (() =>
+	{
+		const names: string[] = [];
+		if (typeof document !== "undefined")
+			for (const key in document.documentElement.style)
+				names.push(key);
+		
+		return new Set<string>(names);
+	})();
 	
 	/** */
 	static readonly HTMLCustomElement =
@@ -356,17 +374,7 @@ class Raw extends (() => Object as any as RawElements)()
 		 */
 		property(name: string)
 		{
-			const propertyNames: string[] = [];
-			
-			if (typeof document !== "undefined")
-				for (const key in document.documentElement.style)
-					propertyNames.push(key);
-			
-			// This is a performance micro-optimization, so that future calls to
-			// is.property() are forwarded directly to this embedded map.
-			const cssPropertySet = new Set(propertyNames);
-			Raw.is.property = cssPropertySet.has.bind(cssPropertySet);
-			return cssPropertySet.has(name);
+			return Raw.properties.has(name);
 		}
 	};
 	

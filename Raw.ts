@@ -312,11 +312,12 @@ class Raw extends (() => Object as any as RawElements)()
 	 * A function that creates a new DOM Text node, but which may be overridden
 	 * in the constructor to return a different but compatible value.
 	 */
-	text(strings: TemplateStringsArray): Text
-	text(...strings: string[]): Text
-	text(...strings: any[])
+	text(template: TemplateStringsArray, ...placeholders: string[]): Text
+	text(string: string): Text
+	text(a: TemplateStringsArray | string, ...b: string[])
 	{
-		return this.doc.createTextNode(strings.join(""));
+		const text = typeof a === "string" ? a : a.map((value, i) => value + (i < a.length - 1 ? b[i] : "")).join("");
+		return this.doc.createTextNode(text);
 	}
 	
 	/**

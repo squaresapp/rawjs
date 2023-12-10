@@ -130,6 +130,20 @@ namespace Cover
 		);
 	}
 	
+	/** */
+	export function coverTemplateStrings()
+	{
+		function blue(text: string) { return "<b>" + text + "</b>"; }
+		function red(text: string) { return "<r>" + text + "</r>"; }
+		
+		const x = raw.text`
+			We need a new ${blue("media channel")} where you can
+			have your ${blue("cake")} and ${red("eat")} it ${red("too")}.
+		`;
+		
+		console.log(x);
+	}
+	
 	//@ts-ignore
 	if (typeof module === "object") Object.assign(module.exports, { Cover });
 }

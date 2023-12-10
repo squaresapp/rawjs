@@ -5,6 +5,8 @@
 	},
 	"exclude": [
 		"**/+*/**/*.ts",
-		"**/*.cover.ts"
+		"**/+*/**/*.tsx",
+		"**/*.cover.ts",
+		"**/*.cover.tsx"
 	]
 }

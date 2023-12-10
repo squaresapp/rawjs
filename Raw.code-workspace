@@ -27,17 +27,17 @@
 	"launch": {
 		"configurations": [
 			{
-				"name": "Debug Active Cover Function",
+				"name": "Debug Active Cover Function (Electron)",
 				"type": "chrome",
 				"request": "launch",
-				"runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
-				"cwd": "${workspaceRoot}",
+				"runtimeExecutable": "${workspaceFolder}/../Moduless/node_modules/electron/cli.js",
+				"cwd": "${workspaceFolder}",
 				"runtimeArgs": [
-					"${workspaceRoot}/node_modules/moduless/build/moduless.js",
+					"${workspaceFolder}/../Moduless/build/moduless.js",
 					"--remote-debugging-port=9222"
 				],
 				"sourceMaps": true,
-				"timeout": 2000
+				"timeout": 2000,
 			},
 			{
 				"name": "Debug All Cover Functions",

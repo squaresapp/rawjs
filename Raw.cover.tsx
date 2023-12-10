@@ -136,12 +136,21 @@ namespace Cover
 		function blue(text: string) { return "<b>" + text + "</b>"; }
 		function red(text: string) { return "<r>" + text + "</r>"; }
 		
-		const x = raw.text`
+		raw.text`
 			We need a new ${blue("media channel")} where you can
 			have your ${blue("cake")} and ${red("eat")} it ${red("too")}.
 		`;
 		
-		console.log(x);
+		function br()
+		{
+			return raw.br();
+		}
+		
+		const text = raw.text`
+			Here is some text. And a line break ${br()}
+		`;
+		
+		debugger;
 	}
 	
 	//@ts-ignore

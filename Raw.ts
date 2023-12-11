@@ -1096,10 +1096,18 @@ declare namespace Raw
 	/** */
 	export interface LinkElementAttribute extends ElementAttribute
 	{
+		crossorigin: boolean;
+		fetchpriority: string;
+		href: string;
+		hreflang: string;
+		imagesizes: string;
+		imagesrcset: string;
+		integrity: string;
+		media: string;
+		referrerpolicy: string;
 		rel: string;
 		type: string;
-		href: string;
-		media: string;
+		sizes: string;
 	}
 	
 	/** */

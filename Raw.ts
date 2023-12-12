@@ -1090,7 +1090,10 @@ declare namespace Raw
 	/** */
 	export interface MetaElementAttribute extends ElementAttribute
 	{
+		charset: string;
 		content: string;
+		httpEquiv: string;
+		itemprop: string;
 	}
 	
 	/** */

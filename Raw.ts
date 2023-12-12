@@ -476,8 +476,8 @@ class Raw extends (() => Object as any as RawElements)()
 						// JavaScript numbers that are specified in the width and height properties
 						// are injected as HTML attributes rather than assigned as CSS properties.
 						if (value && 
-							(name === "width" || name === "height") &&
-							typeof value === "number")
+							(name === "width" || name === "height") && typeof value === "number" ||
+							(e as Element).tagName === "META")
 						{
 							(e as Element).setAttribute(name, value.toString());
 						}

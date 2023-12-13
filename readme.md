@@ -34,8 +34,6 @@ Also:
 ## Watch Paul Gordon's Talk on RawJS at TorontoJS
 
 [![Watch the video](https://img.youtube.com/vi/nsXjS5J-6CM/hqdefault.jpg)](https://www.youtube.com/embed/nsXjS5J-6CM)
-[<img src="https://img.youtube.com/vi/nsXjS5J-6CM/hqdefault.jpg" width="600" height="300"
-/>](https://www.youtube.com/embed/nsXjS5J-6CM)
 
 ## Installation
 

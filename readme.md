@@ -14,27 +14,33 @@ Frameworks tend to do a lot of reinventing of what you can already do in JavaScr
 
 ## RawJS Features:
 
-- No learning curve (assuming you know JavaScript and how to work the DOM).
+- No learning curve beyond knowing how to work the DOM.
 - No props / state / special controller classes that need to be inherited.
 - No weird or unpredictable framework "magic".
 - No bloat. The whole library is only **2.3KB**.
 - No performance overhead.
 - No virtual DOM.
-- No JSX.
+- No JSX required (though it works with JSX if that's your thing).
 - **No external CSS / SASS / LESS** files needed. Write your CSS in TypeScript, and get all the benefits of styling becoming just another part of the code.
 - **No more asking StackOverflow: "How do I do X in framework Y?"**. RawJS gives it to you raw. It's just you and the DOM. Do whatever makes sense.
 
 Also:
 
-- RawJS is being used in production.
+- RawJS is being used in production (see [Scroll](https://scrollapp.org/) and [Homello](https://www.homello.io)).
 - Many years in the making. Has passed through many different design variations.
 - Works as a `<script>` include, as a module, or as a `require()`.
-- Works in Node.js / Deno for server-side HTML generation.
+- Works in Node.js for server-side HTML generation (with the help of HappyDOM).
+
+## Watch Paul Gordon's Talk on RawJS at TorontoJS
+
+[![Watch the video](https://img.youtube.com/vi/nsXjS5J-6CM/hqdefault.jpg)](https://www.youtube.com/embed/nsXjS5J-6CM)
+[<img src="https://img.youtube.com/vi/nsXjS5J-6CM/hqdefault.jpg" width="600" height="300"
+/>](https://www.youtube.com/embed/nsXjS5J-6CM)
 
 ## Installation
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@scrollapp/rawjs@1.0.10/raw.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@scrollapp/rawjs@1.3.3/raw.min.js"></script>
 ```
 Or
 ```
@@ -72,3 +78,5 @@ document.body.append(
 ```
 
 See more examples at the [quickstart](quickstart.md).
+
+

@@ -24,8 +24,8 @@
 			"esnext.asynciterable"
 		]
 	},
-	"exclude": [
-		"**/+*/**/*.ts",
-		"**/+*/**/*.tsx",
+	"include": [
+		"Raw.ts",
+		"Raw.cover.tsx"
 	]
 }

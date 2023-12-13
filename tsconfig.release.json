@@ -3,10 +3,7 @@
 	"compilerOptions": {
 		"outFile": "+build/raw.js"
 	},
-	"exclude": [
-		"**/+*/**/*.ts",
-		"**/+*/**/*.tsx",
-		"**/*.cover.ts",
-		"**/*.cover.tsx"
+	"include": [
+		"Raw.ts"
 	]
 }

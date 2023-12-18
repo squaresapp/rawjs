@@ -1059,13 +1059,20 @@ declare namespace Raw
 	/** */
 	export interface ElementAttribute
 	{
+		accesskey: string;
+		autocapitalize: boolean;
+		autofocus: boolean;
+		dir: string;
+		draggable: boolean;
+		contentEditable: boolean | string;
+		enterkeyhint: string;
 		name: string;
 		id: string;
 		class: string;
 		style: string;
-		contentEditable: boolean | string;
 		spellcheck: boolean;
 		tabIndex: number;
+		title: string;
 		data: Record<string, string | number | boolean>;
 	}
 	

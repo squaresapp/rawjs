@@ -38,7 +38,7 @@ Also:
 ## Installation
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@squaresapp/rawjs@1.3.4/raw.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@squaresapp/rawjs@1.3.6/raw.min.js"></script>
 ```
 Or
 ```

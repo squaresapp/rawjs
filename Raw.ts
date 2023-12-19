@@ -1501,7 +1501,7 @@ const raw = new Raw((typeof document !== "undefined") as true ? document : {} as
 if (typeof module === "object") Object.assign(module.exports, { raw, Raw});
 
 // ES module compatibility
-declare module "@scrollapp/rawjs"
+declare module "@squaresapp/rawjs"
 {
 	const __export: { raw: Raw, Raw: typeof Raw };
 	export = __export;

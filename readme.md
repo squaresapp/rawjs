@@ -2,7 +2,7 @@
 	<img src="readme-poster.png" alt="RawJS Poster Image" width="300">
 </p>
 
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Is%20React%20too%20complicated%3F%20Give%20Raw.js%20a%20go.&url=https://github.com/scrollapp/rawjs)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Is%20React%20too%20complicated%3F%20Give%20Raw.js%20a%20go.&url=https://github.com/squaresapp/rawjs)
 
 ## What is RawJS?
 
@@ -26,7 +26,7 @@ Frameworks tend to do a lot of reinventing of what you can already do in JavaScr
 
 Also:
 
-- RawJS is being used in production (see [Scroll](https://scrollapp.org/) and [Homello](https://www.homello.io)).
+- RawJS is being used in production (see [Squares](https://squaresapp.org/) and [Homello](https://www.homello.io)).
 - Many years in the making. Has passed through many different design variations.
 - Works as a `<script>` include, as a module, or as a `require()`.
 - Works in Node.js for server-side HTML generation (with the help of HappyDOM).
@@ -38,18 +38,18 @@ Also:
 ## Installation
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@scrollapp/rawjs@1.3.4/raw.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@squaresapp/rawjs@1.3.4/raw.min.js"></script>
 ```
 Or
 ```
-npm install @scrollapp/rawjs --save
+npm install @squaresapp/rawjs --save
 ```
 
 ## Usage
 
 For ES Modules usage:
 ```typescript
-import { raw } from "@scrollapp/rawjs";
+import { raw } from "@squaresapp/rawjs";
 
 document.body.append(
 	raw.div(

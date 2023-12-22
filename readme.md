@@ -12,6 +12,10 @@ It turns out, this is all you need to create complex interactive UIs. **You don'
 
 Frameworks tend to do a lot of reinventing of what you can already do in JavaScript. By making controllers that are just plain TypeScript classes, and using the DOM directly to store your view state, you can cut complexities associated with model/view synchronization. Some devs will shudder at this. But this technique can **vastly** reduce total project complexity. Code gets easier to debug. WTF moments reduce in frequency. Total project risk goes down.
 
+## RawJS Demo App
+
+Building vanilla JS apps with the help of RawJS is really easy! See the [demo color viewer mini app here](https://github.com/squaresapp/rawjs-sample) to see how simple vanilla JS apps can be.
+
 ## RawJS Features:
 
 - No learning curve beyond knowing how to work the DOM.
@@ -46,8 +50,6 @@ npm install @squaresapp/rawjs --save
 ```
 
 ## Usage
-
-To see how to build an app with RawJS, the best way is to see the RawJS color viewer [demo app](https://github.com/squaresapp/rawjs-sample). 
 
 For ES Modules usage:
 ```typescript

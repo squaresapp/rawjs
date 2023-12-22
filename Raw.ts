@@ -787,7 +787,7 @@ class Raw extends (() => Object as any as RawElements)()
 			}
 			
 			const idx = sheet.insertRule(selector + "{}");
-			const cssRule = sheet.cssRules.item(idx) as CSSStyleRule;
+			const cssRule = sheet.cssRules[idx] as CSSStyleRule;
 			
 			for (const stylesObject of group.styles)
 				for (let [n, v] of Object.entries(stylesObject))

@@ -47,6 +47,8 @@ npm install @squaresapp/rawjs --save
 
 ## Usage
 
+To see how to build an app with RawJS, the best way is to see the RawJS color viewer [demo app](https://github.com/squaresapp/rawjs-sample). 
+
 For ES Modules usage:
 ```typescript
 import { raw } from "@squaresapp/rawjs";

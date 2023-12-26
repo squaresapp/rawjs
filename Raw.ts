@@ -1498,7 +1498,7 @@ interface CSSStyleDeclaration
 const raw = new Raw((typeof document !== "undefined") as true ? document : {} as Document);
 
 //@ts-ignore CommonJS compatibility
-if (typeof module === "object") Object.assign(module.exports, { raw, Raw});
+if (typeof module === "object") Object.assign(module.exports, { raw, Raw });
 
 // ES module compatibility
 declare module "@squaresapp/rawjs"

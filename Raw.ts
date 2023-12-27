@@ -1200,7 +1200,7 @@ declare namespace Raw
 	 * Defines the prefix that is added to all CSS classes generated
 	 * with the .css() method.
 	 */
-	export const enum GeneratedClassPrefix { value = "raw:" }
+	export const enum GeneratedClassPrefix { value = "raw-" }
 	
 	/** */
 	export type CssParam = string | Raw.Style;

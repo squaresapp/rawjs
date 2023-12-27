@@ -931,7 +931,7 @@ class Raw extends (() => Object as any as RawElements)()
 		
 		h1 = Math.imul(h1 ^ h1 >>> 16, 2246822507) ^ Math.imul(h2 ^ h2 >>> 13, 3266489909);
 		h2 = Math.imul(h2 ^ h2 >>> 16, 2246822507) ^ Math.imul(h1 ^ h1 >>> 13, 3266489909);
-		return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+		return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
 	}
 }
 
@@ -1200,7 +1200,7 @@ declare namespace Raw
 	 * Defines the prefix that is added to all CSS classes generated
 	 * with the .css() method.
 	 */
-	export const enum GeneratedClassPrefix { value = "--raw--" }
+	export const enum GeneratedClassPrefix { value = "raw:" }
 	
 	/** */
 	export type CssParam = string | Raw.Style;

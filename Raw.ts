@@ -733,7 +733,7 @@ class Raw extends (() => Object as any as RawElements)()
 	 */
 	css(...components: Raw.CssParam[])
 	{
-		const styleElement = this.getScopedStyleElement(document);
+		const styleElement = this.getScopedStyleElement(this.doc);
 		const cssJsonText = JSON.stringify(components);
 		components = JSON.parse(cssJsonText);
 		const cssHashClass = Raw.GeneratedClassPrefix.value + this.hash(cssJsonText);

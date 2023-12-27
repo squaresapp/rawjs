@@ -1495,7 +1495,7 @@ interface CSSStyleDeclaration
 	msOverflowStyle: string;
 }
 
-const raw = new Raw((typeof document !== "undefined") as true ? document : {} as Document);
+var raw = new Raw((typeof document !== "undefined") as true ? document : {} as Document);
 
 //@ts-ignore CommonJS compatibility
 if (typeof module === "object") Object.assign(module.exports, { raw, Raw });

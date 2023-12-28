@@ -1500,7 +1500,7 @@ var raw = new Raw((typeof document !== "undefined") as true ? document : {} as D
 //@ts-ignore CommonJS compatibility
 if (typeof module === "object") Object.assign(module.exports, { raw, Raw });
 
-// ES module compatibility
+// Enable typeof import("@squaresapp/rawjs")
 declare module "@squaresapp/rawjs"
 {
 	const __export: { raw: Raw, Raw: typeof Raw };

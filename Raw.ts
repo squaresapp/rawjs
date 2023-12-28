@@ -896,7 +896,7 @@ class Raw extends (() => Object as any as RawElements)()
 			const root = applyTarget.getRootNode();
 			return root instanceof Document ?
 				root.head :
-				root as ShadowRoot;
+				root as ParentNode;
 		})();
 		
 		const cls = "raw-style-sheet";

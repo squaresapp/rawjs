@@ -40,7 +40,7 @@ document.body.append(
 ```
 Makes:
 ```html
-<img src="image.jpg">
+<div style="width: 100px; height: 100px;"></div>
 ```
 
 Read this to learn how it knows if you mean an attribute or a style. (TL;DR: It's not complicated and it gets it right 99.9% of the time.)

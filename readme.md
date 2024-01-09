@@ -30,7 +30,7 @@ Building vanilla JS apps with the help of RawJS is really easy! See the [demo co
 
 Also:
 
-- RawJS is being used in production (see [Squares](https://squaresapp.org/) and [Homello](https://www.homello.io)).
+- RawJS is being used in production (see [Squares](https://www.squaresapp.org/) and [Homello](https://www.homello.io)).
 - Many years in the making. Has passed through many different design variations.
 - Works as a `<script>` include, as a module, or as a `require()`.
 - Works in Node.js for server-side HTML generation (with the help of HappyDOM).

@@ -36,6 +36,18 @@ namespace Cover
 	}
 	
 	/** */
+	export function coverRawUseClassAttributeDirectly()
+	{
+		const e1 = raw.div({ class: "a b c" });
+		const e2 = <div class="x y z"></div>;
+		
+		return [
+			() => e1.classList.contains("a") && e1.classList.contains("b") && e1.classList.contains("c"),
+			() => e2.classList.contains("x") && e2.classList.contains("y") && e2.classList.contains("z"),
+		];
+	}
+	
+	/** */
 	export function coverRawStyleAttach()
 	{
 		raw.style("DIV", {
@@ -149,8 +161,19 @@ namespace Cover
 		const text = raw.text`
 			Here is some text. And a line break ${br()}
 		`;
+	}
+	
+	/** */
+	export function coverBackgroundImageInPseudo()
+	{
+		const div = raw.div(
+			raw.css(":before", {
+				content: `""`,
+				backgroundImage: "linear-gradient(red, blue)",
+			}),
+		);
 		
-		debugger;
+		document.body.append(div);
 	}
 	
 	//@ts-ignore

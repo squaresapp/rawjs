@@ -457,8 +457,7 @@ class Raw extends (() => Object as any as RawElements)()
 				{
 					// Note that ShadowRoots cannot accept string parameters.
 					const cls = param as string;
-					const classes = cls.split(/\s+/g);
-					(e as Element).classList.add(...classes);
+					(e as Element).classList.add(...cls.split(/\s+/g));
 					
 					if (cls.indexOf(Raw.GeneratedClassPrefix.value) === 0)
 					{
@@ -485,6 +484,13 @@ class Raw extends (() => Object as any as RawElements)()
 						{
 							for (const [attrName, attrValue] of Object.entries(value || {}))
 								(e as Element).setAttribute("data-" + attrName, String(attrValue));
+						}
+						// Add support for { class: "class names here" }
+						// Because strings are interpreted as strings, this should only ever come up
+						// when using JSX to construct elements such as: <div class="the class">
+						else if (name === "class")
+						{
+							(e as Element).classList.add(...value.split(/\s+/g));
 						}
 						// Width, height, and background properties are special cased.
 						// They are interpreted as CSS properties rather than HTML attributes.

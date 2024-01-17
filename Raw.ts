@@ -387,7 +387,8 @@ class Raw extends (() => Object as any as RawElements)()
 	};
 	
 	/**
-	 * 
+	 * Creates and returns a ShadowRoot, in order to access
+	 * the shadow DOM of a particular element.
 	 */
 	shadow(...params: Raw.ShadowParam[]): Raw.Param
 	{
@@ -403,10 +404,16 @@ class Raw extends (() => Object as any as RawElements)()
 	 * Any Raw.Param values that are strings are converted to DOM Text nodes rather
 	 * than class names.
 	 */
-	jsx(tag: string, ...params: Raw.Param[])
+	jsx(tag: string, properties: Record<string, any> | null, ...params: Raw.Param[])
 	{
+		const e = this.doc.createElement(tag);
+		
+		if (properties)
+			for (const [n, v] of Object.entries(properties))
+				(e as any)[n] = v;
+		
 		params = params.filter(p => p).map(p => typeof p === "string" ? this.text(p) : p);
-		return this.apply(this.doc.createElement(tag), params) as Element;
+		return this.apply(e, params) as Element;
 	}
 	
 	/**

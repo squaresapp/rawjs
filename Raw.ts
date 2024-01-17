@@ -405,7 +405,7 @@ class Raw extends (() => Object as any as RawElements)()
 	 */
 	jsx(tag: string, ...params: Raw.Param[])
 	{
-		params = params.filter(p => p).map(p => typeof p === "string" ? new Text(p) : p);
+		params = params.filter(p => p).map(p => typeof p === "string" ? this.text(p) : p);
 		return this.apply(this.doc.createElement(tag), params) as Element;
 	}
 	

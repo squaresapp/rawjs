@@ -1,9 +1,15 @@
 
+interface RedElementAttribute extends Raw.ElementAttribute
+{
+	a: number;
+	b: string;
+}
+
 declare namespace JSX
 {
 	interface IntrinsicElements
 	{
-		red: E;
+		red: E<RedElementAttribute>;
 	}
 }
 
@@ -12,18 +18,19 @@ namespace Cover
 	/** */
 	export function coverCustomElement()
 	{
-		document.body.append(
-			<red></red>
-		);
+		const e = <red a={1} b="string"></red>;
+		document.body.append(e);
+		
+		return [
+			() => (e as any).a === 1,
+			() => (e as any).b === "string",
+		];
 	}
 	
 	/** */
 	export function coverRawConnectedEvent()
 	{
-		raw.div(
-			<red>
-			</red>
-		);
+		raw.div(<red></red>);
 		
 		raw.get(document.body)(
 			raw.section(

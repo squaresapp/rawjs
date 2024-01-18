@@ -412,7 +412,12 @@ class Raw extends (() => Object as any as RawElements)()
 			for (const [n, v] of Object.entries(properties))
 				(e as any)[n] = v;
 		
-		params = params.filter(p => p).map(p => typeof p === "string" ? this.text(p) : p);
+		const reg = new RegExp("^" + Raw.GeneratedClassPrefix.value + "[a-z\\d]{9,11}$");
+		
+		params = params
+			.filter(p => p)
+			.map(p => typeof p === "string" && !reg.test(p) ? this.text(p) : p);
+			
 		return this.apply(e, params) as Element;
 	}
 	
@@ -1213,7 +1218,7 @@ declare namespace Raw
 	 * Defines the prefix that is added to all CSS classes generated
 	 * with the .css() method.
 	 */
-	export const enum GeneratedClassPrefix { value = "raw-" }
+	export const enum GeneratedClassPrefix { value = "-raw-" }
 	
 	/** */
 	export type CssParam = string | Raw.Style;

@@ -28,6 +28,20 @@ namespace Cover
 	}
 	
 	/** */
+	export function coverJSXElementWithRawCss()
+	{
+		const element = <div>{ raw.css(" > *", { color: "red" }) }</div>;
+		document.body.append(element);
+	}
+	
+	/** */
+	export function coverJSXElementWithRawEvent()
+	{
+		const element = <div>{ raw.on("click", () => console.log("hello")) }Click me</div>;
+		document.body.append(element);
+	}
+	
+	/** */
 	export function coverRawConnectedEvent()
 	{
 		raw.div(<red></red>);

@@ -578,15 +578,21 @@ class Raw extends (() => Object as any as RawElements)()
 	}
 	
 	/** */
-	on<K extends keyof Raw.ExtendedEventMap>(
+	on<K extends keyof Raw.EventMap>(
 		type: K,
-		listener: (this: HTMLElement, ev: Raw.ExtendedEventMap[K]) => any,
+		listener: (this: HTMLElement, ev: Raw.EventMap[K]) => any,
 		options?: boolean | EventListenerOptions): Raw.Event;
 	/** */
 	on<K extends keyof Raw.EventMap>(
 		remoteTarget: Node | Window,
 		type: K,
 		listener: (this: HTMLElement, ev: Raw.EventMap[K]) => any,
+		options?: boolean | EventListenerOptions): Raw.Event;
+	/** */
+	on<K extends keyof WindowEventMap>(
+		remoteTarget: Window,
+		type: K,
+		listener: (this: Window, ev: WindowEventMap[K]) => any,
 		options?: boolean | EventListenerOptions): Raw.Event;
 	/** */
 	on(...args: any[])
@@ -1399,11 +1405,6 @@ declare namespace Raw
 	export interface EventMap extends HTMLElementEventMap
 	{
 		"input": InputEvent;
-	}
-	
-	/** */
-	export interface ExtendedEventMap extends EventMap
-	{
 		"connected": Event;
 		"disconnected": Event;
 		"rendered": Event;

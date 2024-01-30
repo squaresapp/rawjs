@@ -412,6 +412,8 @@ class Raw extends (() => Object as any as RawElements)()
 			for (const [n, v] of Object.entries(properties))
 				(e as any)[n] = v;
 		
+		// Generated class names should be appended
+		// as class names rather than text content.
 		const reg = new RegExp("^" + Raw.GeneratedClassPrefix.value + "[a-z\\d]{9,11}$");
 		
 		params = params

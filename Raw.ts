@@ -404,9 +404,9 @@ class Raw extends (() => Object as any as RawElements)()
 	 * Any Raw.Param values that are strings are converted to DOM Text nodes rather
 	 * than class names.
 	 */
-	jsx(tag: string, properties: Record<string, any> | null, ...params: Raw.Param[])
+	jsx(tag: string | Element, properties: Record<string, any> | null = null, ...params: Raw.Param[])
 	{
-		const e = this.doc.createElement(tag);
+		const e = typeof tag === "string" ? this.doc.createElement(tag) : tag;
 		
 		if (properties)
 			for (const [n, v] of Object.entries(properties))
@@ -419,7 +419,7 @@ class Raw extends (() => Object as any as RawElements)()
 		params = params
 			.filter(p => p)
 			.map(p => typeof p === "string" && !reg.test(p) ? this.text(p) : p);
-			
+		
 		return this.apply(e, params) as Element;
 	}
 	

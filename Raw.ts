@@ -1180,6 +1180,8 @@ declare namespace Raw
 		autocorrect: boolean;
 		autocomplete: boolean;
 		placeholder: string;
+		required: boolean;
+		pattern: string;
 	}
 	
 	/** */

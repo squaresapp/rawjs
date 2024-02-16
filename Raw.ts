@@ -451,11 +451,11 @@ class Raw extends (() => Object as any as RawElements)()
 			}
 			else switch (param.constructor)
 			{
-				case Raw.Event:
+				case Raw.PortableEvent:
 				{
 					if (e)
 					{
-						const he = param as Raw.Event;
+						const he = param as Raw.PortableEvent;
 						if (he.target)
 							he.host = e;
 						else
@@ -561,7 +561,7 @@ class Raw extends (() => Object as any as RawElements)()
 	//# Event Related
 	
 	/** */
-	static readonly Event = class Event
+	static readonly PortableEvent = class PortableEvent
 	{
 		/** */
 		constructor(
@@ -583,19 +583,19 @@ class Raw extends (() => Object as any as RawElements)()
 	on<K extends keyof Raw.EventMap>(
 		type: K,
 		listener: (this: HTMLElement, ev: Raw.EventMap[K]) => any,
-		options?: boolean | EventListenerOptions): Raw.Event;
+		options?: boolean | EventListenerOptions): Raw.PortableEvent;
 	/** */
 	on<K extends keyof Raw.EventMap>(
 		remoteTarget: Node | Window,
 		type: K,
 		listener: (this: HTMLElement, ev: Raw.EventMap[K]) => any,
-		options?: boolean | EventListenerOptions): Raw.Event;
+		options?: boolean | EventListenerOptions): Raw.PortableEvent;
 	/** */
 	on<K extends keyof WindowEventMap>(
 		remoteTarget: Window,
 		type: K,
 		listener: (this: Window, ev: WindowEventMap[K]) => any,
-		options?: boolean | EventListenerOptions): Raw.Event;
+		options?: boolean | EventListenerOptions): Raw.PortableEvent;
 	/** */
 	on(...args: any[])
 	{
@@ -611,7 +611,7 @@ class Raw extends (() => Object as any as RawElements)()
 			options.once = true;
 		}
 		
-		const hev = new Raw.Event(target, type, handler, options);
+		const hev = new Raw.PortableEvent(target, type, handler, options);
 		
 		// If the event has a defined target, then add the event listener right away,
 		// and the apply() function will assign any host element, if present.
@@ -1057,7 +1057,7 @@ declare namespace Raw
 		// Class name list
 		string |
 		// Event connections
-		Raw.Event |
+		Raw.PortableEvent |
 		// Immediately invoked closure
 		ElementClosure |
 		// Arrays of Params
@@ -1073,7 +1073,7 @@ declare namespace Raw
 	
 	/** */
 	export type ShadowParam = 
-		Raw.Event |
+		Raw.PortableEvent |
 		Raw.ShadowClosure |
 		// Conditionals
 		false | void | null | undefined |
@@ -1403,7 +1403,7 @@ declare namespace Raw
 declare namespace Raw
 {
 	/** */
-	export type Event = InstanceType<typeof Raw.Event>;
+	export type PortableEvent = InstanceType<typeof Raw.PortableEvent>;
 	
 	/** */
 	export interface EventMap extends HTMLElementEventMap

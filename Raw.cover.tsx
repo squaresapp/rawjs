@@ -57,6 +57,15 @@ namespace Cover
 	}
 	
 	/** */
+	export function coverClassesWithExtraSpaces()
+	{
+		const div = raw.div("     a    b   c     ");
+		return [
+			() => div.className === "a b c",
+		];
+	}
+	
+	/** */
 	export function coverRawUseClassAttributeDirectly()
 	{
 		const e1 = raw.div({ class: "a b c" });

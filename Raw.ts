@@ -471,7 +471,7 @@ class Raw extends (() => Object as any as RawElements)()
 				{
 					// Note that ShadowRoots cannot accept string parameters.
 					const cls = param as string;
-					(e as Element).classList.add(...cls.split(/\s+/g));
+					(e as Element).classList.add(...cls.split(/\s+/g).filter(s => s));
 					
 					if (cls.indexOf(Raw.GeneratedClassPrefix.value) === 0)
 					{

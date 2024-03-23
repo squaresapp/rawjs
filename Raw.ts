@@ -1088,18 +1088,18 @@ declare namespace Raw
 		accesskey: string;
 		autocapitalize: boolean;
 		autofocus: boolean;
+		class: string;
+		contentEditable: boolean | string;
+		data: Record<string, string | number | boolean>;
 		dir: string;
 		draggable: boolean;
-		contentEditable: boolean | string;
 		enterkeyhint: string;
-		name: string;
 		id: string;
-		class: string;
-		style: string;
+		name: string;
 		spellcheck: boolean;
+		style: string;
 		tabIndex: number;
 		title: string;
-		data: Record<string, string | number | boolean>;
 	}
 	
 	/** */
@@ -1111,12 +1111,12 @@ declare namespace Raw
 	/** */
 	export interface FormElementAttribute extends ElementAttribute
 	{
-		autocomplete: string;
-		rel: string;
 		action: string;
+		autocomplete: string;
 		enctype: string;
 		method: string;
 		noValidate: boolean;
+		rel: string;
 		target: string;
 	}
 	
@@ -1142,16 +1142,16 @@ declare namespace Raw
 		media: string;
 		referrerpolicy: string;
 		rel: string;
-		type: string;
 		sizes: string;
+		type: string;
 	}
 	
 	/** */
 	export interface ScriptElementAttribute extends ElementAttribute
 	{
-		type: string;
-		src: string;
 		defer: boolean;
+		src: string;
+		type: string;
 	}
 	
 	/** */
@@ -1161,37 +1161,38 @@ declare namespace Raw
 		allowfullscreen: string;
 		loading: string;
 		referrerpolicy: string;
+		sandbox: string;
 		src: string;
 		srcdoc: string;
-		sandbox: string;
 	}
 	
 	/** */
 	export interface InputElementAttribute extends ElementAttribute
 	{
-		type: string;
-		value: string;
-		disabled: boolean;
-		webkitdirectory: boolean;
-		multiple: boolean;
-		maxLength: number;
 		accept: string;
 		autocapitalize: boolean;
-		autocorrect: boolean;
 		autocomplete: boolean;
+		autocorrect: boolean;
+		capture: "user" | "environment";
+		disabled: boolean;
+		maxLength: number;
+		multiple: boolean;
+		pattern: string;
 		placeholder: string;
 		required: boolean;
-		pattern: string;
+		type: string;
+		value: string;
+		webkitdirectory: boolean;
 	}
 	
 	/** */
 	export interface TextAreaElementAttribute extends ElementAttribute
 	{
-		value: string;
+		cols: number;
 		disabled: boolean;
 		placeholder: string;
-		cols: number;
 		rows: number;
+		value: string;
 	}
 	
 	/** */
@@ -1210,13 +1211,13 @@ declare namespace Raw
 	/** */
 	export interface VideoElementAttribute extends ElementAttribute
 	{
+		autoplay: boolean;
+		controls: boolean;
+		loop: boolean;
+		muted: boolean;
+		playsInline: boolean;
 		src: string;
 		type: string;
-		autoplay: boolean;
-		loop: boolean;
-		playsInline: boolean;
-		controls: boolean;
-		muted: boolean;
 	}
 }
 
